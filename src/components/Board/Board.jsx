@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import Card from "../Card/Card";
-import firstCardFrontside from "../../assets/cardImages/frontsides/card-1.jpeg";
+import importAllCardImages from "../../utils/importAllCardImages";
 import cardBackside from "../../assets/cardImages/backside/cardBackside.png";
 
 const BoardStyled = styled.div`
@@ -10,19 +10,29 @@ const BoardStyled = styled.div`
 `;
 
 function Board() {
-  const [isImageFlipped, setIsImageFlipped] = useState(false);
+  const [isCardFlipped, setIsCardFlipped] = useState(false);
 
   const flipCard = () => {
-    setIsImageFlipped(!isImageFlipped);
+    setIsCardFlipped(!isCardFlipped);
   };
+
+  const allCards = importAllCardImages(
+    require.context(
+      "./../../assets/cardImages/frontsides",
+      false,
+      /\.(png|jpe?g|svg)$/
+    )
+  );
 
   return (
     <BoardStyled>
-      {isImageFlipped ? (
-        <Card image={firstCardFrontside} handleClick={flipCard} />
-      ) : (
-        <Card image={cardBackside} handleClick={flipCard} />
-      )}
+      {Object.keys(allCards).map((cardItem, index) => {
+        return isCardFlipped ? (
+          <Card image={allCards[cardItem]} handleClick={flipCard} key={index} />
+        ) : (
+          <Card image={cardBackside} handleClick={flipCard} />
+        );
+      })}
     </BoardStyled>
   );
 }
