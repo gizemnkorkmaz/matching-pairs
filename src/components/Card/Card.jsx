@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import cardBackside from "../../assets/cardImages/backside/cardBackside.png";
+import cardBackside from "../../assets/images/backside/cardBackside.png";
 
 const CardStyled = styled.img`
   width: 200px;
@@ -25,11 +25,11 @@ function Card({ image, id }) {
         <CardStyled
           src={image}
           onClick={flipCard}
-          id={id}
           isFlipped={isCardFlipped}
+          data-id={id}
         />
       ) : (
-        <CardStyled src={cardBackside} onClick={flipCard} id={id} />
+        <CardStyled src={cardBackside} onClick={flipCard} data-id={id} />
       )}
     </>
   );
