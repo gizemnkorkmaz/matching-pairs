@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Card from "../Card/Card";
 
+import shuffleArray from "../../utils/shuffleArray";
 import importAllCardImages from "../../utils/importAllCardImages";
 
 const BoardStyled = styled.div`
@@ -15,15 +16,17 @@ const BoardStyled = styled.div`
 function Board() {
   const allCards = importAllCardImages(
     require.context(
-      "./../../assets/cardImages/frontsides",
+      "./../../assets/images/frontsides",
       false,
       /\.(png|jpe?g|svg)$/
     )
   );
 
+  const shuffledArray = shuffleArray(Object.keys(allCards));
+
   return (
     <BoardStyled>
-      {Object.keys(allCards).map((card, id) => {
+      {shuffledArray.map((card, id) => {
         return <Card image={allCards[card]} id={id} key={id} />;
       })}
     </BoardStyled>
