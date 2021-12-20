@@ -22,12 +22,18 @@ function Board() {
     )
   );
 
-  const shuffledArray = shuffleArray(Object.keys(allCards));
+  //duplicate the array for matching and shuffle it
+  const shuffledArray = [
+    ...shuffleArray(Object.values(allCards)),
+    ...shuffleArray(Object.values(allCards)),
+  ];
 
   return (
     <BoardStyled>
-      {shuffledArray.map((card, id) => {
-        return <Card image={allCards[card]} id={id} key={id} />;
+      {shuffledArray.map((cardId, index) => {
+        return (
+          <Card image={shuffledArray[index]} cardId={cardId} key={index} />
+        );
       })}
     </BoardStyled>
   );

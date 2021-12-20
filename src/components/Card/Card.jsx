@@ -12,7 +12,7 @@ const CardStyled = styled.img`
   cursor: pointer;
 `;
 
-function Card({ image, id }) {
+function Card({ image, cardId }) {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
 
   const flipCard = () => {
@@ -20,18 +20,11 @@ function Card({ image, id }) {
   };
 
   return (
-    <>
-      {isCardFlipped ? (
-        <CardStyled
-          src={image}
-          onClick={flipCard}
-          isFlipped={isCardFlipped}
-          data-id={id}
-        />
-      ) : (
-        <CardStyled src={cardBackside} onClick={flipCard} data-id={id} />
-      )}
-    </>
+    <CardStyled
+      src={isCardFlipped ? image : cardBackside}
+      onClick={flipCard}
+      data-id={cardId}
+    />
   );
 }
 
