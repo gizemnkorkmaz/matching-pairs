@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Card from "../Card/Card";
 
 import shuffleArray from "../../utils/shuffleArray";
 import importAllCardImages from "../../utils/importAllCardImages";
+import Stats from "../Stats/Stats";
+import { useEffect } from "react/cjs/react.development";
 
 const BoardStyled = styled.div`
   width: 100%;
@@ -13,7 +15,13 @@ const BoardStyled = styled.div`
   justify-content: center;
 `;
 
+const CardContainer = styled.div``;
+
 function Board() {
+  const [clickCount, setClickCount] = useState(0);
+  const [shuffledArray, setShuffledArray] = useState([]);
+
+  //make an array of images
   const allCards = importAllCardImages(
     require.context(
       "./../../assets/images/frontsides",
@@ -22,20 +30,32 @@ function Board() {
     )
   );
 
-  //duplicate the array for matching and shuffle it
-  const shuffledArray = [
-    ...shuffleArray(Object.values(allCards)),
-    ...shuffleArray(Object.values(allCards)),
-  ];
+  //increment the click count
+  const handleCardClick = () => {
+    setClickCount(clickCount + 1);
+  };
+
+  //duplicate the array for matching and shuffle it on initial render
+  useEffect(() => {
+    setShuffledArray([
+      ...shuffleArray(Object.values(allCards)),
+      ...shuffleArray(Object.values(allCards)),
+    ]);
+  }, []);
 
   return (
-    <BoardStyled>
-      {shuffledArray.map((cardId, index) => {
-        return (
-          <Card image={shuffledArray[index]} cardId={cardId} key={index} />
-        );
-      })}
-    </BoardStyled>
+    <>
+      <Stats clickCount={clickCount} />
+      <BoardStyled>
+        {shuffledArray.map((cardId, index) => {
+          return (
+            <CardContainer onClick={handleCardClick} key={index}>
+              <Card image={shuffledArray[index]} cardId={cardId} />
+            </CardContainer>
+          );
+        })}
+      </BoardStyled>
+    </>
   );
 }
 
