@@ -19,7 +19,6 @@ const CardContainer = styled.div``;
 function Board() {
   const [clickCount, setClickCount] = useState(0);
   const [shuffledArray, setShuffledArray] = useState([]);
-  const [cardPair, setCardPair] = useState([]);
 
   //make an array of images
   const allCards = importAllCardImages(
@@ -38,23 +37,9 @@ function Board() {
     ]);
   }, []);
 
-  //check matching status of card pairs
-  useEffect(() => {
-    if (cardPair[0] === cardPair[1] && cardPair.length) {
-      console.log("it's a match!");
-    } else {
-      console.log("will flip");
-    }
-  }, [cardPair]);
-
   //increment the click count && update card pairs
-  const handleCardClick = (event) => {
+  const incrementCount = () => {
     setClickCount(clickCount + 1);
-    if (cardPair.length < 2) {
-      setCardPair([...cardPair, event.target.dataset.id]);
-    } else {
-      setCardPair([]);
-    }
   };
 
   return (
@@ -63,7 +48,7 @@ function Board() {
       <BoardStyled>
         {shuffledArray.map((cardId, index) => {
           return (
-            <CardContainer onClick={handleCardClick} key={index}>
+            <CardContainer onClick={incrementCount} key={index}>
               <Card image={shuffledArray[index]} cardId={cardId} />
             </CardContainer>
           );
