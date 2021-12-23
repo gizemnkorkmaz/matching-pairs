@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-import cardBackside from "../../assets/images/backside/cardBackside.png";
+import cover from "../../assets/images/cover/cover.png";
 
 const CardStyled = styled.img`
   width: 200px;
@@ -10,44 +10,18 @@ const CardStyled = styled.img`
   border-radius: 10px;
   box-shadow: 5px 5px 10px black;
   cursor: pointer;
-
-  .matched {
-    border: 1px solid green;
-  }
 `;
-
 function Card({ image, cardId }) {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
-  const [cardPair, setCardPair] = useState([]);
-  const [isMatched, setIsMatched] = useState(false);
 
-  //check matching status of card pairs
-  useEffect(() => {
-    if (cardPair.length && cardPair[0] === cardPair[1]) {
-      setIsMatched(true);
-    } else {
-      setIsMatched(false);
-    }
-  }, [cardPair]);
-
-  const handleCardClick = (event) => {
-    if (!isMatched) {
-      setIsCardFlipped(!isCardFlipped);
-      if (cardPair.length < 2) {
-        const newPair = [...cardPair, event.target.dataset.id];
-        setCardPair(newPair);
-      } else {
-        setCardPair([]);
-      }
-    } else {
-      setIsCardFlipped(true);
-    }
+  const flipCard = () => {
+    setIsCardFlipped(!isCardFlipped);
   };
 
   return (
     <CardStyled
-      src={isCardFlipped ? image : cardBackside}
-      onClick={handleCardClick}
+      src={isCardFlipped ? image : cover}
+      onClick={flipCard}
       data-id={cardId}
     />
   );

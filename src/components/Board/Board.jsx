@@ -4,9 +4,6 @@ import styled from "styled-components";
 import Stats from "../Stats/Stats";
 import Card from "../Card/Card";
 
-import shuffleArray from "../../utils/shuffleArray";
-import importAllCardImages from "../../utils/importAllCardImages";
-
 const BoardStyled = styled.div`
   width: 100%;
   display: flex;
@@ -16,30 +13,31 @@ const BoardStyled = styled.div`
 
 const CardContainer = styled.div``;
 
-function Board() {
+function Board({ shuffledArray }) {
   const [clickCount, setClickCount] = useState(0);
-  const [shuffledArray, setShuffledArray] = useState([]);
+  const [cardPair, setCardPair] = useState([]);
+  const [isMatched, setIsMatched] = useState(false);
 
-  //make an array of images
-  const allCards = importAllCardImages(
-    require.context(
-      "./../../assets/images/frontsides",
-      false,
-      /\.(png|jpe?g|svg)$/
-    )
-  );
-
-  //duplicate the array for matching and shuffle it on initial render
+  //check matching status of card pairs
   useEffect(() => {
-    setShuffledArray([
-      ...shuffleArray(Object.values(allCards)),
-      ...shuffleArray(Object.values(allCards)),
-    ]);
-  }, []);
+    if (cardPair.length && cardPair[0] === cardPair[1]) {
+      setIsMatched(true);
+      setCardPair([]);
+    }
+    if (cardPair.length && cardPair[0] !== cardPair[1]) {
+      setIsMatched(false);
+      setCardPair([]);
+    }
+  }, [cardPair]);
 
   //increment the click count && update card pairs
-  const incrementCount = () => {
+  const handleCardClick = (event) => {
     setClickCount(clickCount + 1);
+    if (cardPair.length < 2) {
+      const newPair = [...cardPair, event.target.dataset.id];
+      setCardPair(newPair);
+    }
+    console.log(cardPair, isMatched);
   };
 
   return (
@@ -48,7 +46,7 @@ function Board() {
       <BoardStyled>
         {shuffledArray.map((cardId, index) => {
           return (
-            <CardContainer onClick={incrementCount} key={index}>
+            <CardContainer onClick={handleCardClick} key={index}>
               <Card image={shuffledArray[index]} cardId={cardId} />
             </CardContainer>
           );
