@@ -5,23 +5,16 @@ import Header from "./components/Header/Header";
 import Board from "./components/Board/Board";
 import Stats from "./components/Stats/Stats";
 
-import importAllCardImages from "./utils/importAllCardImages";
 import shuffleArray from "./utils/shuffleArray";
 import Button from "./components/Button/Button";
+
+import cardImages from "./utils/cardImages";
 
 function App() {
   const [shuffledArray, setShuffledArray] = useState([]);
 
-  //make an array of images
-  const allCards = importAllCardImages(
-    require.context("./assets/images/cards", false, /\.(png|jpe?g|svg)$/)
-  );
-
   //duplicate the array for matching and shuffle it on initial render
-  const duplicatedArray = [
-    ...Object.values(allCards),
-    ...Object.values(allCards),
-  ];
+  const duplicatedArray = [...cardImages, ...cardImages];
   useEffect(() => {
     setShuffledArray([...shuffleArray(duplicatedArray)]);
   }, []);
