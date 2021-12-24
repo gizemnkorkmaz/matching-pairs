@@ -7,6 +7,7 @@ const HeaderStyled = styled.h1`
   color: #eee;
   opacity: 0.6;
 `;
+
 function Header() {
   return <HeaderStyled>Matching Pairs</HeaderStyled>;
 }
