@@ -7,8 +7,8 @@ const StatsStyled = styled.h2`
   opacity: 0.6;
 `;
 
-function Stats({ clickCount }) {
-  return <StatsStyled>Clicks: {clickCount}</StatsStyled>;
+function Stats() {
+  return <StatsStyled></StatsStyled>;
 }
 
 export default Stats;
