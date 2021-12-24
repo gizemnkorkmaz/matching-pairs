@@ -15,12 +15,12 @@ const CardStyled = styled.img`
   }
 `;
 
-function Card({ image, cardId, isOpen, onClick }) {
+function Card({ image, cardId, isOpen, handleClick }) {
   return (
     <CardStyled
-      onClick={onClick}
+      onClick={handleClick}
       src={isOpen ? image : cover}
-      data-id={cardId}
+      cardId={cardId}
     />
   );
 }
