@@ -1,54 +1,60 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-import Stats from "../Stats/Stats";
 import Card from "../Card/Card";
 
 const BoardStyled = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
+  padding: 2rem;
 `;
 
-const CardContainer = styled.div``;
-
 function Board({ shuffledArray }) {
-  const [clickCount, setClickCount] = useState(0);
   const [cardPair, setCardPair] = useState([]);
-  const [isMatched, setIsMatched] = useState(false);
+  const [openCardList, setOpenCardList] = useState([]);
 
-  //check matching status of card pairs
-  useEffect(() => {
-    if (cardPair.length && cardPair[0] === cardPair[1]) {
-      setIsMatched(true);
-      setCardPair([]);
-    }
-    if (cardPair.length && cardPair[0] !== cardPair[1]) {
-      setIsMatched(false);
-      setCardPair([]);
-    }
-  }, [cardPair]);
+  const checkIsMatched = (cardPair) => {
+    if (!cardPair.length) return;
 
-  //increment the click count && update card pairs
-  const handleCardClick = (event) => {
-    setClickCount(clickCount + 1);
-    if (cardPair.length < 2) {
-      const newPair = [...cardPair, event.target.dataset.id];
-      setCardPair(newPair);
+    const [firstCardIndex, secondCardIndex] = cardPair;
+
+    const firstCard = shuffledArray[firstCardIndex];
+    const secondCard = shuffledArray[secondCardIndex];
+
+    return firstCard === secondCard;
+  };
+
+  const handleCardClick = (index) => {
+    if (cardPair.includes(index)) return;
+
+    const newCardPair = [...cardPair, index];
+
+    if (cardPair.length === 2) {
+      setCardPair([]);
+    } else if (cardPair.length === 1) {
+      const isMatched = checkIsMatched(newCardPair);
+      if (isMatched) {
+        setOpenCardList([...openCardList, ...newCardPair]);
+      }
+      setCardPair(newCardPair);
+    } else if (!cardPair.length) {
+      setCardPair(newCardPair);
     }
-    console.log(cardPair, isMatched);
   };
 
   return (
     <>
-      <Stats clickCount={clickCount} />
       <BoardStyled>
-        {shuffledArray.map((cardId, index) => {
+        {shuffledArray.map((card, index) => {
           return (
-            <CardContainer onClick={handleCardClick} key={index}>
-              <Card image={shuffledArray[index]} cardId={cardId} />
-            </CardContainer>
+            <Card
+              key={index}
+              image={card.src}
+              cardId={card.id}
+              handleClick={() => handleCardClick(index)}
+              isOpen={[...openCardList, ...cardPair].includes(index)}
+            />
           );
         })}
       </BoardStyled>
