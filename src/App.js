@@ -11,7 +11,7 @@ import cardImages from "./utils/cardImages";
 function App() {
   const [shuffledArray, setShuffledArray] = useState([]);
 
-  //duplicate the card array for matching and shuffle it on initial render
+  //duplicate the card array for matching, add random ids and shuffle it on initial render
   const duplicatedCards = [...cardImages, ...cardImages].map((card) => ({
     ...card,
     id: Math.random(),
@@ -25,7 +25,6 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <Header />
-      <Stats />
       <Board shuffledArray={shuffledArray} />
     </div>
   );
