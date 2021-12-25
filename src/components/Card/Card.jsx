@@ -13,6 +13,10 @@ const CardStyled = styled.img`
     width: 120px;
     height: 120px;
   }
+  @media (max-width: 500px) {
+    width: 75px;
+    height: 75px;
+  }
 `;
 
 function Card({ image, cardId, isOpen, handleClick }) {
@@ -20,7 +24,7 @@ function Card({ image, cardId, isOpen, handleClick }) {
     <CardStyled
       onClick={handleClick}
       src={isOpen ? image : cover}
-      cardId={cardId}
+      data-id={cardId}
     />
   );
 }
