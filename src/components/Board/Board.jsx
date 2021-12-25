@@ -3,38 +3,32 @@ import styled from "styled-components";
 
 import Card from "../Card/Card";
 
+import getNamesByIds from "../../utils/getNamesByIds";
+
 const BoardStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 0.5rem;
   padding: 2rem;
+  justify-content: center;
 `;
 
 function Board({ shuffledArray }) {
   const [cardPair, setCardPair] = useState([]);
   const [openCardList, setOpenCardList] = useState([]);
 
-  const checkIsMatched = (cardPair) => {
-    if (!cardPair.length) return;
+  const handleCardClick = (id) => {
+    if (cardPair.includes(id)) return;
 
-    const [firstCardIndex, secondCardIndex] = cardPair;
-
-    const firstCard = shuffledArray[firstCardIndex];
-    const secondCard = shuffledArray[secondCardIndex];
-
-    return firstCard === secondCard;
-  };
-
-  const handleCardClick = (index) => {
-    if (cardPair.includes(index)) return;
-
-    const newCardPair = [...cardPair, index];
+    const newCardPair = [...cardPair, id];
+    const [firstCard, secondCard] = newCardPair;
 
     if (cardPair.length === 2) {
       setCardPair([]);
     } else if (cardPair.length === 1) {
-      const isMatched = checkIsMatched(newCardPair);
-      if (isMatched) {
+      const firstCardName = getNamesByIds(shuffledArray, firstCard);
+      const secondCardName = getNamesByIds(shuffledArray, secondCard);
+      if (firstCardName === secondCardName) {
         setOpenCardList([...openCardList, ...newCardPair]);
       }
       setCardPair(newCardPair);
@@ -52,8 +46,8 @@ function Board({ shuffledArray }) {
               key={index}
               image={card.src}
               cardId={card.id}
-              handleClick={() => handleCardClick(index)}
-              isOpen={[...openCardList, ...cardPair].includes(index)}
+              handleClick={() => handleCardClick(card.id)}
+              isOpen={[...openCardList, ...cardPair].includes(card.id)}
             />
           );
         })}
