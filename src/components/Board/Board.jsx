@@ -1,71 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-import Stats from "../Stats/Stats";
 import Card from "../Card/Card";
 
-import shuffleArray from "../../utils/shuffleArray";
-import importAllCardImages from "../../utils/importAllCardImages";
+import getNamesByIds from "../../utils/getNamesByIds";
 
 const BoardStyled = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
+  padding: 2rem;
   justify-content: center;
 `;
 
-const CardContainer = styled.div``;
-
-function Board() {
-  const [clickCount, setClickCount] = useState(0);
-  const [shuffledArray, setShuffledArray] = useState([]);
+function Board({ shuffledArray }) {
   const [cardPair, setCardPair] = useState([]);
+  const [openCardList, setOpenCardList] = useState([]);
 
-  //make an array of images
-  const allCards = importAllCardImages(
-    require.context(
-      "./../../assets/images/frontsides",
-      false,
-      /\.(png|jpe?g|svg)$/
-    )
-  );
+  const handleCardClick = (id) => {
+    if (cardPair.includes(id)) return;
 
-  //duplicate the array for matching and shuffle it on initial render
-  useEffect(() => {
-    setShuffledArray([
-      ...shuffleArray(Object.values(allCards)),
-      ...shuffleArray(Object.values(allCards)),
-    ]);
-  }, []);
+    const newCardPair = [...cardPair, id];
+    const [firstCard, secondCard] = newCardPair;
 
-  //check matching status of card pairs
-  useEffect(() => {
-    if (cardPair[0] === cardPair[1] && cardPair.length) {
-      console.log("it's a match!");
-    } else {
-      console.log("will flip");
-    }
-  }, [cardPair]);
-
-  //increment the click count && update card pairs
-  const handleCardClick = (event) => {
-    setClickCount(clickCount + 1);
-    if (cardPair.length < 2) {
-      setCardPair([...cardPair, event.target.dataset.id]);
-    } else {
+    if (cardPair.length === 2) {
       setCardPair([]);
+    } else if (cardPair.length === 1) {
+      const firstCardName = getNamesByIds(shuffledArray, firstCard);
+      const secondCardName = getNamesByIds(shuffledArray, secondCard);
+
+      if (firstCardName === secondCardName) {
+        setOpenCardList([...openCardList, ...newCardPair]);
+      }
+
+      setCardPair(newCardPair);
+    } else if (!cardPair.length) {
+      setCardPair(newCardPair);
     }
   };
 
   return (
     <>
-      <Stats clickCount={clickCount} />
       <BoardStyled>
-        {shuffledArray.map((cardId, index) => {
+        {shuffledArray.map((card, index) => {
           return (
-            <CardContainer onClick={handleCardClick} key={index}>
-              <Card image={shuffledArray[index]} cardId={cardId} />
-            </CardContainer>
+            <Card
+              key={index}
+              image={card.src}
+              cardId={card.id}
+              handleClick={() => handleCardClick(card.id)}
+              isOpen={[...openCardList, ...cardPair].includes(card.id)}
+            />
           );
         })}
       </BoardStyled>

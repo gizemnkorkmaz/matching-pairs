@@ -7,6 +7,12 @@ const GlobalStyle = createGlobalStyle`
     background: #1e230f;
     font-family: 'Oswald', sans-serif;
   }
+  .App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export default GlobalStyle;

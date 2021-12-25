@@ -1,28 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import cardBackside from "../../assets/images/backside/cardBackside.png";
+import cover from "../../assets/images/cover/cover.png";
 
 const CardStyled = styled.img`
   width: 200px;
   height: 200px;
-  margin: 1rem;
   border-radius: 10px;
   box-shadow: 5px 5px 10px black;
   cursor: pointer;
+  @media (max-width: 800px) {
+    width: 120px;
+    height: 120px;
+  }
+  @media (max-width: 500px) {
+    width: 75px;
+    height: 75px;
+  }
 `;
 
-function Card({ image, cardId }) {
-  const [isCardFlipped, setIsCardFlipped] = useState(false);
-
-  const flipCard = () => {
-    setIsCardFlipped(!isCardFlipped);
-  };
-
+function Card({ image, cardId, isOpen, handleClick }) {
   return (
     <CardStyled
-      src={isCardFlipped ? image : cardBackside}
-      onClick={flipCard}
+      onClick={handleClick}
+      src={isOpen ? image : cover}
       data-id={cardId}
     />
   );
