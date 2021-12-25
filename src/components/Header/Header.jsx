@@ -6,6 +6,7 @@ const HeaderStyled = styled.h1`
   font-size: 42px;
   color: #eee;
   opacity: 0.6;
+  margin-bottom: 0;
 `;
 
 function Header() {
