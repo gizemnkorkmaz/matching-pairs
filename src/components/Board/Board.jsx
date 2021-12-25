@@ -28,9 +28,11 @@ function Board({ shuffledArray }) {
     } else if (cardPair.length === 1) {
       const firstCardName = getNamesByIds(shuffledArray, firstCard);
       const secondCardName = getNamesByIds(shuffledArray, secondCard);
+
       if (firstCardName === secondCardName) {
         setOpenCardList([...openCardList, ...newCardPair]);
       }
+
       setCardPair(newCardPair);
     } else if (!cardPair.length) {
       setCardPair(newCardPair);
