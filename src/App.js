@@ -6,17 +6,19 @@ import Board from "./components/Board/Board";
 import Stats from "./components/Stats/Stats";
 
 import shuffleArray from "./utils/shuffleArray";
-import Button from "./components/Button/Button";
-
 import cardImages from "./utils/cardImages";
 
 function App() {
   const [shuffledArray, setShuffledArray] = useState([]);
 
-  //duplicate the array for matching and shuffle it on initial render
-  const duplicatedArray = [...cardImages, ...cardImages];
+  //duplicate the card array for matching and shuffle it on initial render
+  const duplicatedCards = [...cardImages, ...cardImages].map((card) => ({
+    ...card,
+    id: Math.random(),
+  }));
+
   useEffect(() => {
-    setShuffledArray([...shuffleArray(duplicatedArray)]);
+    setShuffledArray([...shuffleArray(duplicatedCards)]);
   }, []);
 
   return (
@@ -24,7 +26,6 @@ function App() {
       <GlobalStyle />
       <Header />
       <Stats />
-      <Button />
       <Board shuffledArray={shuffledArray} />
     </div>
   );
