@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Card from "../Card/Card";
 
 import getNamesByIds from "../../utils/getNamesByIds";
+import Stats from "../Stats/Stats";
 
 const BoardStyled = styled.div`
   display: grid;
@@ -15,32 +16,35 @@ const BoardStyled = styled.div`
 
 function Board({ shuffledArray }) {
   const [cardPair, setCardPair] = useState([]);
-  const [openCardList, setOpenCardList] = useState([]);
+  const [flippedCardList, setFlippedCardList] = useState([]);
+  const [movesCount, setMovesCount] = useState(0);
 
   const handleCardClick = (id) => {
     if (cardPair.includes(id)) return;
 
-    const newCardPair = [...cardPair, id];
-    const [firstCard, secondCard] = newCardPair;
+    const currentCardPair = [...cardPair, id];
+    const [firstCardId, secondCardId] = currentCardPair;
 
     if (cardPair.length === 2) {
       setCardPair([]);
+      setMovesCount(movesCount + 1);
     } else if (cardPair.length === 1) {
-      const firstCardName = getNamesByIds(shuffledArray, firstCard);
-      const secondCardName = getNamesByIds(shuffledArray, secondCard);
+      const firstCardName = getNamesByIds(shuffledArray, firstCardId);
+      const secondCardName = getNamesByIds(shuffledArray, secondCardId);
 
       if (firstCardName === secondCardName) {
-        setOpenCardList([...openCardList, ...newCardPair]);
+        setFlippedCardList([...flippedCardList, ...currentCardPair]);
       }
 
-      setCardPair(newCardPair);
+      setCardPair(currentCardPair);
     } else if (!cardPair.length) {
-      setCardPair(newCardPair);
+      setCardPair(currentCardPair);
     }
   };
 
   return (
     <>
+      <Stats movesCount={movesCount} />
       <BoardStyled>
         {shuffledArray.map((card) => {
           return (
@@ -49,7 +53,7 @@ function Board({ shuffledArray }) {
               image={card.src}
               cardId={card.id}
               handleClick={() => handleCardClick(card.id)}
-              isOpen={[...openCardList, ...cardPair].includes(card.id)}
+              isFlipped={[...flippedCardList, ...cardPair].includes(card.id)}
             />
           );
         })}
