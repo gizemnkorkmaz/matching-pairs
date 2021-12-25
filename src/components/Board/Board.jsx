@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import Card from "../Card/Card";
+import Stats from "../Stats/Stats";
 
 import getNamesByIds from "../../utils/getNamesByIds";
-import Stats from "../Stats/Stats";
 
 const BoardStyled = styled.div`
   display: grid;
@@ -19,16 +19,20 @@ function Board({ shuffledArray }) {
   const [flippedCardList, setFlippedCardList] = useState([]);
   const [movesCount, setMovesCount] = useState(0);
 
+  useEffect(() => {
+    if (cardPair.length === 2) {
+      setMovesCount(movesCount + 1);
+      setTimeout(() => setCardPair([]), 1000);
+    }
+  }, [cardPair]);
+
   const handleCardClick = (id) => {
     if (cardPair.includes(id)) return;
 
     const currentCardPair = [...cardPair, id];
     const [firstCardId, secondCardId] = currentCardPair;
 
-    if (cardPair.length === 2) {
-      setCardPair([]);
-      setMovesCount(movesCount + 1);
-    } else if (cardPair.length === 1) {
+    if (cardPair.length === 1) {
       const firstCardName = getNamesByIds(shuffledArray, firstCardId);
       const secondCardName = getNamesByIds(shuffledArray, secondCardId);
 
