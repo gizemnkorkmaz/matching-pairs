@@ -9,32 +9,26 @@ const cardImages = [
   {
     name: "francrepas",
     src: francrepas,
-    id: 1,
   },
   {
     name: "harbinger",
     src: harbinger,
-    id: 2,
   },
   {
     name: "holofernes",
     src: holofernes,
-    id: 3,
   },
   {
     name: "mouillevent",
     src: mouillevent,
-    id: 4,
   },
   {
     name: "painensac",
     src: painensac,
-    id: 5,
   },
   {
     name: "papeligosse",
     src: papeligosse,
-    id: 6,
   },
 ];
 
