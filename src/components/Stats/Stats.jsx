@@ -5,10 +5,11 @@ const StatsStyled = styled.h2`
   text-align: center;
   color: #eee;
   opacity: 0.6;
+  margin: 0;
 `;
 
-function Stats() {
-  return <StatsStyled></StatsStyled>;
+function Stats({ movesCount }) {
+  return <StatsStyled>Moves: {movesCount}</StatsStyled>;
 }
 
 export default Stats;
