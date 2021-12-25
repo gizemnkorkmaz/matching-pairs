@@ -19,11 +19,11 @@ const CardStyled = styled.img`
   }
 `;
 
-function Card({ image, cardId, isOpen, handleClick }) {
+function Card({ image, cardId, isFlipped, handleClick }) {
   return (
     <CardStyled
       onClick={handleClick}
-      src={isOpen ? image : cover}
+      src={isFlipped ? image : cover}
       data-id={cardId}
     />
   );
