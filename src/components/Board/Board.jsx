@@ -42,10 +42,10 @@ function Board({ shuffledArray }) {
   return (
     <>
       <BoardStyled>
-        {shuffledArray.map((card, index) => {
+        {shuffledArray.map((card) => {
           return (
             <Card
-              key={index}
+              key={card.id}
               image={card.src}
               cardId={card.id}
               handleClick={() => handleCardClick(card.id)}
