@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Card from "../Card/Card";
 import Stats from "../Stats/Stats";
+import Button from "../Button/Button";
 
-import getNamesByIds from "../../utils/getNamesByIds";
+import shuffleArray from "../../utils/shuffleArray";
+import getNameById from "../../utils/getNameById";
 
 const BoardStyled = styled.div`
   display: grid;
@@ -14,17 +16,11 @@ const BoardStyled = styled.div`
   justify-content: center;
 `;
 
-function Board({ shuffledArray }) {
+function Board({ duplicatedCards }) {
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
   const [movesCount, setMovesCount] = useState(0);
-
-  useEffect(() => {
-    if (cardPair.length === 2) {
-      setMovesCount(movesCount + 1);
-      setTimeout(() => setCardPair([]), 1000);
-    }
-  }, [cardPair]);
+  const [cards, setCards] = useState(shuffleArray(duplicatedCards));
 
   const handleCardClick = (id) => {
     if (cardPair.includes(id)) return;
@@ -33,8 +29,8 @@ function Board({ shuffledArray }) {
     const [firstCardId, secondCardId] = currentCardPair;
 
     if (cardPair.length === 1) {
-      const firstCardName = getNamesByIds(shuffledArray, firstCardId);
-      const secondCardName = getNamesByIds(shuffledArray, secondCardId);
+      const firstCardName = getNameById(cards, firstCardId);
+      const secondCardName = getNameById(cards, secondCardId);
 
       if (firstCardName === secondCardName) {
         setFlippedCardList([...flippedCardList, ...currentCardPair]);
@@ -44,13 +40,25 @@ function Board({ shuffledArray }) {
     } else if (!cardPair.length) {
       setCardPair(currentCardPair);
     }
+    if (currentCardPair.length === 2) {
+      setMovesCount(movesCount + 1);
+      setTimeout(() => setCardPair([]), 1000);
+    }
+  };
+
+  const resetGame = () => {
+    setCards(shuffleArray(duplicatedCards));
+    setCardPair([]);
+    setFlippedCardList([]);
+    setMovesCount(0);
   };
 
   return (
     <>
       <Stats movesCount={movesCount} />
+      <Button handleClick={resetGame}> Reset </Button>
       <BoardStyled>
-        {shuffledArray.map((card) => {
+        {cards.map((card) => {
           return (
             <Card
               key={card.id}
