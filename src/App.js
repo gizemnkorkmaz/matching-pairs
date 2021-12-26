@@ -4,7 +4,7 @@ import Board from "./components/Board/Board";
 
 import data from "./data.json";
 
-const duplicatedCards = [...data, ...data].map((card) => ({
+const duplicatedCards = [...data.cards, ...data.cards].map((card) => ({
   ...card,
   id: Math.random(),
 }));

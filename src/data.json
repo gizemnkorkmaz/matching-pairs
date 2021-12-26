@@ -1,26 +1,32 @@
-[
-  {
-    "name": "francrepas",
-    "src": "./images/cards/francrepas.jpeg"
-  },
-  {
-    "name": "harbinger",
-    "src": "./images/cards/harbinger.jpeg"
-  },
-  {
-    "name": "holofernes",
-    "src": "./images/cards/holofernes.jpeg"
-  },
-  {
-    "name": "mouillevent",
-    "src": "./images/cards/mouillevent.jpeg"
-  },
-  {
-    "name": "painensac",
-    "src": "./images/cards/painensac.jpeg"
-  },
-  {
-    "name": "papeligosse",
-    "src": "./images/cards/papeligosse.jpeg"
+{
+  "cards": [
+    {
+      "name": "francrepas",
+      "src": "./images/cards/francrepas.jpeg"
+    },
+    {
+      "name": "harbinger",
+      "src": "./images/cards/harbinger.jpeg"
+    },
+    {
+      "name": "holofernes",
+      "src": "./images/cards/holofernes.jpeg"
+    },
+    {
+      "name": "mouillevent",
+      "src": "./images/cards/mouillevent.jpeg"
+    },
+    {
+      "name": "painensac",
+      "src": "./images/cards/painensac.jpeg"
+    },
+    {
+      "name": "papeligosse",
+      "src": "./images/cards/papeligosse.jpeg"
+    }
+  ],
+  "cover": {
+    "name": "cover",
+    "src": "./images/cards/cover.png"
   }
-]
+}
