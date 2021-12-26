@@ -18,8 +18,8 @@ const ButtonStyled = styled.button`
   }
 `;
 
-function Button({ handleClick, buttonName }) {
-  return <ButtonStyled onClick={handleClick}>{buttonName}</ButtonStyled>;
+function Button({ handleClick, children }) {
+  return <ButtonStyled onClick={handleClick}>{children}</ButtonStyled>;
 }
 
 export default Button;
