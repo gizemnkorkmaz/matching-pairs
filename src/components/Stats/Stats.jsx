@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StatsStyled = styled.div`
+const StatsStyled = styled.p`
   text-align: center;
   color: #eee;
   opacity: 0.6;
