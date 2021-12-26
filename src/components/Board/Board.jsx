@@ -57,7 +57,6 @@ function Board({ duplicatedCards }) {
     <>
       <Stats movesCount={movesCount} />
       <Button handleClick={resetGame} buttonName="Reset" />
-
       <BoardStyled>
         {cards.map((card) => {
           return (
