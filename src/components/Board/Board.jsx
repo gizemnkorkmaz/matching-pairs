@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 import Card from "../Card/Card";
 import Stats from "../Stats/Stats";
+import Button from "../Button/Button";
 
 import shuffleArray from "../../utils/shuffleArray";
 import getNameById from "../../utils/getNameById";
-import Button from "../Button/Button";
 
 const BoardStyled = styled.div`
   display: grid;
