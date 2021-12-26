@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import cover from "../../assets/images/cover/cover.png";
+import cover from "../../assets/coverImage/cover.png";
 
 const CardStyled = styled.img`
   width: 200px;
