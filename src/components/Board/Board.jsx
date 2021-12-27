@@ -12,7 +12,7 @@ const BoardStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 0.5rem;
-  padding: 2rem;
+  padding: 1rem 2rem;
   justify-content: center;
 `;
 
