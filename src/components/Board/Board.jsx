@@ -17,10 +17,10 @@ const BoardStyled = styled.div`
 `;
 
 function Board({ duplicatedCards }) {
+  const [cards, setCards] = useState(shuffleArray(duplicatedCards));
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
   const [movesCount, setMovesCount] = useState(0);
-  const [cards, setCards] = useState(shuffleArray(duplicatedCards));
 
   const handleCardClick = (id) => {
     if (cardPair.includes(id)) return;
