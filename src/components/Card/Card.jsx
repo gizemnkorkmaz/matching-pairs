@@ -33,14 +33,6 @@ const CardStyled = styled.div`
     }
   }
 
-  .front {
-    transform: rotateY(0deg);
-  }
-
-  .back {
-    transform: rotateY(180deg);
-  }
-
   .card.is-flipped {
     transform: rotateY(180deg);
   }
@@ -53,8 +45,8 @@ function Card({ image, cardId, isFlipped, handleClick }) {
         <img
           src={isFlipped ? image : data.cover.src}
           data-id={cardId}
-          alt={isFlipped ? "frontside" : "backside"}
-          className={`card-image ${isFlipped ? "front" : "back"}`}
+          className="card-image"
+          alt=""
         />
       </div>
     </CardStyled>
