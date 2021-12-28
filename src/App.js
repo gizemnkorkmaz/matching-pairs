@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import GlobalStyle from "./components/globalStyled";
 import Header from "./components/Header/Header";
 import Board from "./components/Board/Board";
+import Levels from "./components/Levels/Levels";
+import GlobalStyle from "./components/globalStyled";
 
 import data from "./data.json";
-import Levels from "./components/Levels/Levels";
 
 const duplicatedCards = [...data.cards, ...data.cards].map((card) => ({
   ...card,
