@@ -49,13 +49,13 @@ const CardStyled = styled.div`
 function Card({ image, cardId, isFlipped, handleClick }) {
   return (
     <CardStyled>
-      <div className={isFlipped ? "is-flipped card" : "card"}>
+      <div className={`card ${isFlipped ? "is-flipped" : ""}`}>
         <img
           onClick={handleClick}
           src={isFlipped ? image : data.cover.src}
           data-id={cardId}
           alt={isFlipped ? "frontside" : "backside"}
-          className={isFlipped ? "card-image front" : "card-image back"}
+          className={`card-image ${isFlipped ? "front" : "back"}`}
         />
       </div>
     </CardStyled>
