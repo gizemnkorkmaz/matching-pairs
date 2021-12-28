@@ -23,6 +23,30 @@
     {
       "name": "papeligosse",
       "src": "/images/cards/papeligosse.jpeg"
+    },
+    {
+      "name": "epistemon",
+      "src": "/images/cards/epistemon.jpeg"
+    },
+    {
+      "name": "esquire",
+      "src": "/images/cards/esquire.jpeg"
+    },
+    {
+      "name": "eudemon",
+      "src": "/images/cards/eudemon.jpeg"
+    },
+    {
+      "name": "grangousier",
+      "src": "/images/cards/grangousier.jpeg"
+    },
+    {
+      "name": "jobelin",
+      "src": "/images/cards/jobelin.jpeg"
+    },
+    {
+      "name": "wetgullet",
+      "src": "/images/cards/wetgullet.jpeg"
     }
   ],
   "cover": {
