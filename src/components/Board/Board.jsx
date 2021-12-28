@@ -12,15 +12,15 @@ const BoardStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 0.5rem;
-  padding: 2rem;
+  padding: 1rem 2rem;
   justify-content: center;
 `;
 
 function Board({ duplicatedCards }) {
+  const [cards, setCards] = useState(shuffleArray(duplicatedCards));
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
   const [movesCount, setMovesCount] = useState(0);
-  const [cards, setCards] = useState(shuffleArray(duplicatedCards));
 
   const handleCardClick = (id) => {
     if (cardPair.includes(id)) return;
