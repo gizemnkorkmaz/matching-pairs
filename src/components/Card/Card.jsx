@@ -15,8 +15,8 @@ const CardStyled = styled.div`
     position: relative;
 
     .card-image {
-      width: 175px;
-      height: 175px;
+      width: 170px;
+      height: 170px;
       border-radius: 10px;
       box-shadow: 5px 5px 10px black;
       cursor: pointer;
@@ -27,8 +27,8 @@ const CardStyled = styled.div`
       }
 
       @media (max-width: 500px) {
-        width: 75px;
-        height: 75px;
+        width: 60px;
+        height: 60px;
       }
     }
   }
