@@ -1,5 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+
+import Board from "../Board/Board";
+import Header from "../Header/Header";
 import styled from "styled-components";
+
+import duplicateCards from "../../utils/duplicateCards";
+
+import data from "../../data.json";
 
 const LevelsStyled = styled.div`
   padding: 5rem 2rem;
@@ -31,16 +38,40 @@ const LevelsStyled = styled.div`
     }
   }
 `;
+
 function Levels() {
-  return (
+  const [isShowLevels, setIsShowLevels] = useState(true);
+  const [duplicatedCards, setDuplicatedCards] = useState(null);
+
+  const startEasyMode = () => {
+    setDuplicatedCards(duplicateCards(data, 6));
+    setIsShowLevels(false);
+  };
+
+  const startMediumMode = () => {
+    setDuplicatedCards(duplicateCards(data, 9));
+    setIsShowLevels(false);
+  };
+
+  const startHardMode = () => {
+    setDuplicatedCards(duplicateCards(data, 12));
+    setIsShowLevels(false);
+  };
+
+  return isShowLevels ? (
     <LevelsStyled>
       <h1>Please select a difficulty level</h1>
       <ul>
-        <li>Easy</li>
-        <li>Medium</li>
-        <li>Hard</li>
+        <li onClick={startEasyMode}>Easy</li>
+        <li onClick={startMediumMode}>Medium</li>
+        <li onClick={startHardMode}>Hard</li>
       </ul>
     </LevelsStyled>
+  ) : (
+    <>
+      <Header />
+      <Board duplicatedCards={duplicatedCards} />
+    </>
   );
 }
 
