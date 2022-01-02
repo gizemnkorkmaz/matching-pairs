@@ -71,7 +71,10 @@ function Levels() {
   ) : (
     <>
       <Header />
-      <Board duplicatedCards={duplicatedCards} />
+      <Board
+        duplicatedCards={duplicatedCards}
+        setIsShowLevels={setIsShowLevels}
+      />
     </>
   );
 }
