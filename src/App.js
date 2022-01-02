@@ -1,5 +1,5 @@
-import Levels from "./components/Levels/Levels";
 import GlobalStyle from "./components/globalStyled";
+import Levels from "./components/Levels/Levels";
 
 function App() {
   return (
