@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const ButtonStyled = styled.button`
   font-family: "Oswald", sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   padding: 0.2rem 1.5rem;
   margin: 0.5rem;
   border-radius: 10px;
@@ -12,9 +12,8 @@ const ButtonStyled = styled.button`
   border: none;
   background: #573c29;
   color: #eee;
-  opacity: 0.6;
-  @media (max-width: 800px) {
-    font-size: 16px;
+  @media (max-width: 1000px) {
+    font-size: 14px;
   }
 `;
 
