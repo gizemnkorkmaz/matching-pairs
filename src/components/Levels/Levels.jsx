@@ -19,6 +19,7 @@ const LevelsStyled = styled.div`
     letter-spacing: 0.5px;
     padding-left: 3rem;
   }
+
   ul {
     list-style: none;
 
@@ -44,17 +45,17 @@ function Levels() {
   const [duplicatedCards, setDuplicatedCards] = useState(null);
 
   const startEasyMode = () => {
-    setDuplicatedCards(duplicateCards(data, 6));
+    setDuplicatedCards(duplicateCards(data, 8));
     setIsShowLevels(false);
   };
 
   const startMediumMode = () => {
-    setDuplicatedCards(duplicateCards(data, 9));
+    setDuplicatedCards(duplicateCards(data, 12));
     setIsShowLevels(false);
   };
 
   const startHardMode = () => {
-    setDuplicatedCards(duplicateCards(data, 12));
+    setDuplicatedCards(duplicateCards(data, 16));
     setIsShowLevels(false);
   };
 
