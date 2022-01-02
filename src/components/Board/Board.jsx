@@ -10,12 +10,13 @@ import getNameById from "../../utils/getNameById";
 
 const BoardStyled = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 0.5rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
   justify-content: center;
+  max-width: 1400px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
@@ -60,8 +61,9 @@ function Board({ duplicatedCards }) {
 
   return (
     <>
-      <Stats movesCount={movesCount} />
-      <Button handleClick={resetGame}> Reset </Button>
+      <Stats movesCount={movesCount}>
+        <Button handleClick={resetGame}> Reset</Button>
+      </Stats>
       <BoardStyled>
         {cards.map((card) => {
           return (
