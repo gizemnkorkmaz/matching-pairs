@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
     background: #1e230f;
     font-family: 'Oswald', sans-serif;
   }
+
   .App {
     display: flex;
     flex-direction: column;
@@ -14,15 +15,18 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     padding: 1rem;
   }
+
   .easy {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+
   .medium {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     @media (max-width: 1000px) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
+  
   .hard {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     @media (max-width: 1000px) {
