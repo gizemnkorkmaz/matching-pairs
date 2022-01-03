@@ -52,13 +52,17 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
     setCardPair([]);
     setFlippedCardList([]);
     setMovesCount(0);
+  };
+
+  const changeLevel = () => {
     setIsStartGame(true);
   };
 
   return (
     <>
       <Stats movesCount={movesCount}>
-        <Button handleClick={resetGame}> Reset</Button>
+        <Button handleClick={resetGame}> Reset Game</Button>
+        <Button handleClick={changeLevel}> Change Difficulty</Button>
       </Stats>
       <BoardStyled className={gameLevel}>
         {cards.map((card) => {
