@@ -10,19 +10,14 @@ import getNameById from "../../utils/getNameById";
 
 const BoardStyled = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 0.5rem;
   padding: 1rem;
   justify-content: center;
   max-width: 1400px;
-
-  @media (max-width: 1000px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
 `;
 
-function Board({ duplicatedCards, setIsStartGame }) {
+function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
   const [cards, setCards] = useState(shuffleArray(duplicatedCards));
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
@@ -65,7 +60,7 @@ function Board({ duplicatedCards, setIsStartGame }) {
       <Stats movesCount={movesCount}>
         <Button handleClick={resetGame}> Reset</Button>
       </Stats>
-      <BoardStyled>
+      <BoardStyled className={gameLevel}>
         {cards.map((card) => {
           return (
             <Card
