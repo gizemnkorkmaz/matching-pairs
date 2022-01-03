@@ -18,7 +18,7 @@ function App() {
       setDuplicatedCards(duplicateCards(data, 8));
     } else if (level === "medium") {
       setDuplicatedCards(duplicateCards(data, 12));
-    } else {
+    } else if (level === "hard") {
       setDuplicatedCards(duplicateCards(data, 16));
     }
   };
