@@ -17,7 +17,7 @@ const LevelsStyled = styled.div`
   button {
     font-size: 22px;
     cursor: pointer;
-    padding: 1rem 5rem;
+    padding: 1rem 3rem;
     margin: 0.5rem;
     border-radius: 10px;
     box-shadow: 5px 5px 10px black;
@@ -26,6 +26,8 @@ const LevelsStyled = styled.div`
     background: #573c29;
     color: #eee;
     font-family: "Oswald", sans-serif;
+    width: 60%;
+    text-align: center
     &:hover {
       font-size: 26px;
       opacity: 1;

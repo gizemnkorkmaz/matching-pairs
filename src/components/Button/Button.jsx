@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const ButtonStyled = styled.button`
   font-family: "Oswald", sans-serif;
+  text-align: center
   font-size: 18px;
   padding: 0.2rem 1.5rem;
   margin: 0.5rem;
