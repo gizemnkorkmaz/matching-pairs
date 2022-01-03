@@ -22,7 +22,7 @@ const BoardStyled = styled.div`
 }
 `;
 
-function Board({ duplicatedCards, setIsShowLevels }) {
+function Board({ duplicatedCards, setIsStartGame }) {
   const [cards, setCards] = useState(shuffleArray(duplicatedCards));
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
@@ -57,7 +57,7 @@ function Board({ duplicatedCards, setIsShowLevels }) {
     setCardPair([]);
     setFlippedCardList([]);
     setMovesCount(0);
-    setIsShowLevels(true);
+    setIsStartGame(true);
   };
 
   return (
