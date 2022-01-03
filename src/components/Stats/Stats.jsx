@@ -3,15 +3,17 @@ import styled from "styled-components";
 
 const StatsStyled = styled.div`
   max-width: 900px;
-  width: 50%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   text-align: center;
+  flex-wrap: wrap;
+  gap: 3rem;
   color: #eee;
   opacity: 0.6;
   margin: 0;
-  padding: 0 2rem;
+  padding: 0;
   font-size: 18px;
 `;
 
