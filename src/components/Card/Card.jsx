@@ -22,13 +22,13 @@ const CardStyled = styled.div`
       cursor: pointer;
 
       @media (max-width: 1000px) {
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
       }
 
       @media (max-width: 500px) {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
       }
     }
   }
