@@ -6,6 +6,7 @@ import Levels from "./components/Levels/Levels";
 import GlobalStyle from "./components/globalStyled";
 
 import duplicateCards from "./utils/duplicateCards";
+
 import data from "./data.json";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 
   const selectLevel = (level) => {
     setIsStartGame(false);
+
     if (level === "easy") {
       setDuplicatedCards(duplicateCards(data, 8));
       setGameLevel("easy");
@@ -26,6 +28,7 @@ function App() {
       setGameLevel("hard");
     }
   };
+
   return (
     <div className="App">
       <GlobalStyle />
