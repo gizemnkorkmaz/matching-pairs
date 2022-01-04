@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
 
   .medium {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
     @media (max-width: 1000px) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -29,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
   
   .hard {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    
     @media (max-width: 1000px) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
