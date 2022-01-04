@@ -14,17 +14,18 @@ function App() {
   const [duplicatedCards, setDuplicatedCards] = useState(null);
   const [gameLevel, setGameLevel] = useState(null);
 
-  const selectLevel = (level) => {
-    setIsStartGame(true);
-    setGameLevel(level);
+  const selectLevel = (level = "easy") => {
+    const cardCounts = {
+      easy: 8,
+      medium: 12,
+      hard: 16,
+    };
 
-    if (level === "easy") {
-      setDuplicatedCards(duplicateCards(data, 8));
-    } else if (level === "medium") {
-      setDuplicatedCards(duplicateCards(data, 12));
-    } else if (level === "hard") {
-      setDuplicatedCards(duplicateCards(data, 16));
-    }
+    const cards = duplicateCards(data, cardCounts[level]);
+
+    setDuplicatedCards(cards);
+    setGameLevel(level);
+    setIsStartGame(true);
   };
 
   return (
