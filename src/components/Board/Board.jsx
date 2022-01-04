@@ -61,8 +61,8 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
   return (
     <>
       <Stats movesCount={movesCount}>
-        <Button handleClick={resetGame}> Reset Game</Button>
-        <Button handleClick={changeLevel}> Change Difficulty</Button>
+        <Button handleClick={resetGame}>Reset Game</Button>
+        <Button handleClick={changeLevel}>Change Difficulty</Button>
       </Stats>
       <BoardStyled className={gameLevel}>
         {cards.map((card) => {
