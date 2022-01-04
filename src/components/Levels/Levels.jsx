@@ -28,6 +28,7 @@ const LevelsStyled = styled.div`
     font-family: "Oswald", sans-serif;
     width: 60%;
     text-align: center
+    
     &:hover {
       font-size: 26px;
       opacity: 1;
