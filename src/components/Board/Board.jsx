@@ -55,7 +55,7 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
   };
 
   const changeLevel = () => {
-    setIsStartGame(true);
+    setIsStartGame(false);
   };
 
   return (
