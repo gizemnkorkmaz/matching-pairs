@@ -12,11 +12,12 @@ const BoardStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 0.5rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
   justify-content: center;
+  max-width: 1400px;
 `;
 
-function Board({ duplicatedCards }) {
+function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
   const [cards, setCards] = useState(shuffleArray(duplicatedCards));
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
@@ -53,11 +54,17 @@ function Board({ duplicatedCards }) {
     setMovesCount(0);
   };
 
+  const changeLevel = () => {
+    setIsStartGame(false);
+  };
+
   return (
     <>
-      <Stats movesCount={movesCount} />
-      <Button handleClick={resetGame}> Reset </Button>
-      <BoardStyled>
+      <Stats movesCount={movesCount}>
+        <Button handleClick={resetGame}>Reset Game</Button>
+        <Button handleClick={changeLevel}>Change Difficulty</Button>
+      </Stats>
+      <BoardStyled className={gameLevel}>
         {cards.map((card) => {
           return (
             <Card

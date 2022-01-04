@@ -15,24 +15,23 @@ const CardStyled = styled.div`
     position: relative;
 
     .card-image {
-      width: 175px;
-      height: 175px;
+      width: 150px;
+      height: 150px;
       border-radius: 10px;
       box-shadow: 5px 5px 10px black;
       cursor: pointer;
 
-      @media (max-width: 800px) {
+      @media (max-width: 1000px) {
         width: 120px;
         height: 120px;
       }
 
       @media (max-width: 500px) {
-        width: 75px;
-        height: 75px;
+        width: 80px;
+        height: 80px;
       }
     }
   }
-
   .card.is-flipped {
     transform: rotateY(180deg);
   }

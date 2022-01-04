@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 const HeaderStyled = styled.h1`
   text-align: center;
-  font-size: 42px;
+  font-size: 32px;
   color: #eee;
   opacity: 0.6;
-  margin-bottom: 0;
+  margin: 0;
+  padding: 0;
 `;
 
 function Header() {
