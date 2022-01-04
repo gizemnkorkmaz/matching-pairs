@@ -10,22 +10,20 @@ import duplicateCards from "./utils/duplicateCards";
 import data from "./data.json";
 
 function App() {
-  const [isStartGame, setIsStartGame] = useState(true);
+  const [isStartGame, setIsStartGame] = useState(false);
   const [duplicatedCards, setDuplicatedCards] = useState(null);
   const [gameLevel, setGameLevel] = useState(null);
 
   const selectLevel = (level) => {
-    setIsStartGame(false);
+    setIsStartGame(true);
+    setGameLevel(level);
 
     if (level === "easy") {
       setDuplicatedCards(duplicateCards(data, 8));
-      setGameLevel("easy");
     } else if (level === "medium") {
       setDuplicatedCards(duplicateCards(data, 12));
-      setGameLevel("medium");
     } else if (level === "hard") {
       setDuplicatedCards(duplicateCards(data, 16));
-      setGameLevel("hard");
     }
   };
 
@@ -34,13 +32,13 @@ function App() {
       <GlobalStyle />
       <Header />
       {isStartGame ? (
-        <Levels selectLevel={selectLevel} />
-      ) : (
         <Board
           duplicatedCards={duplicatedCards}
           setIsStartGame={setIsStartGame}
           gameLevel={gameLevel}
         />
+      ) : (
+        <Levels selectLevel={selectLevel} />
       )}
     </div>
   );
