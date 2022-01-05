@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const HeaderStyled = styled.h1`
+  width: 100%;
   text-align: center;
   font-size: 32px;
   color: #eee;
