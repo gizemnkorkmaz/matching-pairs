@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const LevelsStyled = styled.div`
-  padding: 5rem 2rem;
+  padding: 2rem;
   text-align: center;
   font-size: 18px;
   color: #eee;
