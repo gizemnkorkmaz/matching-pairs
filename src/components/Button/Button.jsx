@@ -13,8 +13,10 @@ const ButtonStyled = styled.button`
   border: none;
   background: #573c29;
   color: #eee;
+
   @media (max-width: 1000px) {
-    font-size: 14px;
+    font-size: 12px;
+    width: 100%;
   }
 `;
 
