@@ -64,7 +64,7 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
   const calculateScore = () => {
     const cardCount = cards.length / 2;
     const flippedCardCount = flippedCardList.length + 2;
-    const currentScore = Math.floor((cardCount / movesCount) * 1000);
+    const currentScore = Math.floor((movesCount / cardCount) * 100);
 
     setScore(currentScore);
 
