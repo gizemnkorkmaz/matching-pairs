@@ -2,18 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const StatsStyled = styled.div`
-  max-width: 900px;
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  flex-wrap: nowrap;
-  gap: 3rem;
   color: #eee;
   opacity: 0.6;
-  margin: 1rem;
   padding: 0;
+  margin: 0;
   font-size: 20px;
   font-weight: 900;
 
@@ -27,14 +20,8 @@ const StatsStyled = styled.div`
   }
 `;
 
-function Stats({ score, highScore, children }) {
-  return (
-    <StatsStyled>
-      <span>Score: {score}</span>
-      <span>{children}</span>
-      <span>High Score: {highScore}</span>
-    </StatsStyled>
-  );
+function Stats({ movesCount }) {
+  return <StatsStyled>Moves: {movesCount}</StatsStyled>;
 }
 
 export default Stats;
