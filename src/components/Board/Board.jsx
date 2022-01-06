@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Card from "../Card/Card";
 import Stats from "../Stats/Stats";
 import Button from "../Button/Button";
+import BoardHeader from "../BoardHeader/BoardHeader";
 
 import shuffleArray from "../../utils/shuffleArray";
 import getNameById from "../../utils/getNameById";
@@ -75,10 +76,13 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
 
   return (
     <>
-      <Stats score={score} highScore={highScore}>
-        <Button handleClick={resetGame}>Reset Game</Button>
-        <Button handleClick={changeLevel}>Change Difficulty</Button>
-      </Stats>
+      <BoardHeader score={score} highScore={highScore}>
+        <Stats movesCount={movesCount} />
+        <div className="buttons">
+          <Button handleClick={resetGame}>Reset Game</Button>
+          <Button handleClick={changeLevel}>Change Difficulty</Button>
+        </div>
+      </BoardHeader>
       <BoardStyled className={gameLevel}>
         {cards.map((card) => {
           return (
