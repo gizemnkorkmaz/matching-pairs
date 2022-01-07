@@ -18,6 +18,11 @@ const ButtonStyled = styled.button`
     width: 100%;
     font-size: 14px;
   }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    font-size: 12px;
+  }
 `;
 
 function Button({ handleClick, children }) {
