@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const StatsStyled = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
   text-align: center;
   color: #eee;
   opacity: 0.6;
@@ -20,8 +23,14 @@ const StatsStyled = styled.div`
   }
 `;
 
-function Stats({ movesCount }) {
-  return <StatsStyled>Moves: {movesCount}</StatsStyled>;
+function Stats({ movesCount, score, highScore }) {
+  return (
+    <StatsStyled>
+      <div>Moves: {movesCount}</div>
+      <div>Score: {score}</div>
+      <div>High Score: {highScore}</div>
+    </StatsStyled>
+  );
 }
 
 export default Stats;
