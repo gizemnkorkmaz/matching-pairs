@@ -25,6 +25,18 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
 
+  const calculateScore = () => {
+    const maxScore = 10000;
+    const uniqueCardCount = cards.length / 2;
+    const finalScore = Math.floor(maxScore * (uniqueCardCount / movesCount));
+
+    setScore(finalScore);
+
+    if (finalScore > highScore) {
+      setHighScore(finalScore);
+    }
+  };
+
   const handleCardClick = (id) => {
     if (cardPair.includes(id)) return;
 
@@ -36,14 +48,20 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
       const secondCardName = getNameById(cards, secondCardId);
 
       if (firstCardName === secondCardName) {
-        setFlippedCardList([...flippedCardList, ...currentCardPair]);
-        calculateScore();
+        const currentFlippedCards = [...flippedCardList, ...currentCardPair];
+
+        setFlippedCardList(currentFlippedCards);
+
+        if (currentFlippedCards.length === cards.length) {
+          calculateScore();
+        }
       }
 
       setCardPair(currentCardPair);
     } else if (!cardPair.length) {
       setCardPair(currentCardPair);
     }
+
     if (currentCardPair.length === 2) {
       setMovesCount(movesCount + 1);
       setTimeout(() => setCardPair([]), 1000);
@@ -62,23 +80,11 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
     setIsStartGame(false);
   };
 
-  const calculateScore = () => {
-    const cardCount = cards.length / 2;
-    const flippedCardCount = flippedCardList.length + 2;
-    const currentScore = Math.floor((movesCount / cardCount) * 100);
-
-    setScore(currentScore);
-
-    if (flippedCardCount === cards.length && currentScore > highScore) {
-      setHighScore(currentScore);
-    }
-  };
-
   return (
     <>
-      <BoardHeader score={score} highScore={highScore}>
-        <Stats movesCount={movesCount} />
-        <div className="buttons">
+      <BoardHeader>
+        <Stats movesCount={movesCount} score={score} highScore={highScore} />
+        <div className="button-container">
           <Button handleClick={resetGame}>Reset Game</Button>
           <Button handleClick={changeLevel}>Change Difficulty</Button>
         </div>
