@@ -16,7 +16,7 @@ function App() {
 
   const selectLevel = (level = "easy") => {
     const cardCounts = {
-      easy: 6,
+      easy: 4,
       medium: 8,
       hard: 12,
     };
