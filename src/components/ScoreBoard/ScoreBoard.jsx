@@ -28,6 +28,7 @@ const ModalStyled = styled.section`
   left: 50%;
   padding: 3rem;
   color: #9b9d95;
+  text-align: center;
   transform: translate(-50%, -50%);
 
   @media (max-width: 600px) {
