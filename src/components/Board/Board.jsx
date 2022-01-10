@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import Card from "../Card/Card";
-import Stats from "../Stats/Stats";
-import Button from "../Button/Button";
 import BoardHeader from "../BoardHeader/BoardHeader";
 
 import shuffleArray from "../../utils/shuffleArray";
@@ -82,13 +80,13 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
 
   return (
     <>
-      <BoardHeader>
-        <Stats movesCount={movesCount} score={score} highScore={highScore} />
-        <div className="button-container">
-          <Button handleClick={resetGame}>Reset Game</Button>
-          <Button handleClick={changeLevel}>Change Difficulty</Button>
-        </div>
-      </BoardHeader>
+      <BoardHeader
+        movesCount={movesCount}
+        score={score}
+        highScore={highScore}
+        resetGame={resetGame}
+        changeLevel={changeLevel}
+      />
       <BoardStyled className={gameLevel}>
         {cards.map((card) => {
           return (
