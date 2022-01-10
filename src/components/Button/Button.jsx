@@ -12,7 +12,7 @@ const ButtonStyled = styled.button`
   cursor: pointer;
   border: none;
   background: #573c29;
-  color: #eee;
+  color: #9b9d95;
 
   @media (max-width: 1000px) {
     width: 100%;
