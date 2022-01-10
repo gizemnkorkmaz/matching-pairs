@@ -23,14 +23,8 @@ const StatsStyled = styled.div`
   }
 `;
 
-function Stats({ movesCount, score, highScore }) {
-  return (
-    <StatsStyled>
-      <div>Moves: {movesCount}</div>
-      <div>Score: {score}</div>
-      <div>High Score: {highScore}</div>
-    </StatsStyled>
-  );
+function Stats({ turnsCount }) {
+  return <StatsStyled>Turns: {turnsCount}</StatsStyled>;
 }
 
 export default Stats;
