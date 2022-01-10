@@ -29,6 +29,10 @@ const ModalStyled = styled.section`
   padding: 3rem;
   color: #9b9d95;
   transform: translate(-50%, -50%);
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
 
 function ScoreBoard({ turnsCount, score, highScore, changeLevel, resetGame }) {
