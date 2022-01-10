@@ -13,7 +13,6 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
   }
 
   .easy {

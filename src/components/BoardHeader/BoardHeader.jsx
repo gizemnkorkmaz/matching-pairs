@@ -1,0 +1,35 @@
+import React from "react";
+import styled from "styled-components";
+
+import Stats from "../Stats/Stats";
+import Button from "../Button/Button";
+
+const BoardHeaderStyled = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #eee;
+  opacity: 0.6;
+  margin: 0.5rem;
+`;
+
+const BoardActionsWrapper = styled.div`
+  padding: 0.2rem;
+`;
+
+function BoardHeader({ movesCount, score, highScore, resetGame, changeLevel }) {
+  return (
+    <BoardHeaderStyled>
+      <Stats movesCount={movesCount} score={score} highScore={highScore} />
+      <BoardActionsWrapper>
+        <Button handleClick={resetGame}>Reset Game</Button>
+        <Button handleClick={changeLevel}>Change Level</Button>
+      </BoardActionsWrapper>
+    </BoardHeaderStyled>
+  );
+}
+
+export default BoardHeader;
