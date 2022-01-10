@@ -21,10 +21,6 @@
       "src": "/images/cards/painensac.webp"
     },
     {
-      "name": "papeligosse",
-      "src": "/images/cards/papeligosse.webp"
-    },
-    {
       "name": "epistemon",
       "src": "/images/cards/epistemon.webp"
     },
@@ -33,16 +29,8 @@
       "src": "/images/cards/esquire.webp"
     },
     {
-      "name": "eudemon",
-      "src": "/images/cards/eudemon.webp"
-    },
-    {
       "name": "grangousier",
       "src": "/images/cards/grangousier.webp"
-    },
-    {
-      "name": "jobelin",
-      "src": "/images/cards/jobelin.webp"
     },
     {
       "name": "wetgullet",
@@ -51,10 +39,6 @@
     {
       "name": "eabbe",
       "src": "/images/cards/eabbe.webp"
-    },
-    {
-      "name": "flutter",
-      "src": "/images/cards/flutter.webp"
     },
     {
       "name": "gargamelle",
