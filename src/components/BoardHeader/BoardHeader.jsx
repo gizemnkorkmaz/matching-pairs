@@ -12,18 +12,17 @@ const BoardHeaderStyled = styled.div`
   align-items: center;
   flex-wrap: wrap;
   color: #eee;
-  opacity: 0.6;
   margin: 0.5rem;
 `;
 
 const BoardActionsWrapper = styled.div`
-  padding: 0.2rem;
+  margin: 0.5rem;
 `;
 
-function BoardHeader({ movesCount, score, highScore, resetGame, changeLevel }) {
+function BoardHeader({ turnsCount, resetGame, changeLevel }) {
   return (
     <BoardHeaderStyled>
-      <Stats movesCount={movesCount} score={score} highScore={highScore} />
+      <Stats turnsCount={turnsCount} />
       <BoardActionsWrapper>
         <Button handleClick={resetGame}>Reset Game</Button>
         <Button handleClick={changeLevel}>Change Level</Button>

@@ -16,9 +16,9 @@ function App() {
 
   const selectLevel = (level = "easy") => {
     const cardCounts = {
-      easy: 8,
-      medium: 12,
-      hard: 16,
+      easy: 4,
+      medium: 8,
+      hard: 12,
     };
 
     const cards = duplicateCards(data, cardCounts[level]);
