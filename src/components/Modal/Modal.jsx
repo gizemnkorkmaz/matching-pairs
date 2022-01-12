@@ -20,6 +20,7 @@ const ModalSectionStyled = styled.section`
   position: fixed;
   background: #1e230f;
   width: 40%;
+  max-width: 700px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px black;
   height: auto;
@@ -44,6 +45,7 @@ const CloseButtonStyled = styled.button`
   font-size: 32px;
   color: #000;
   cursor: pointer;
+  padding: 0.5rem;
 `;
 
 function Modal({ children }) {
