@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import data from "../../data.json";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -35,7 +36,7 @@ const ModalMain = styled.section`
   }
 `;
 
-const CloseButton = styled.button`
+const ModalButton = styled.button`
   position: fixed;
   top: 0;
   right: 0;
@@ -45,6 +46,10 @@ const CloseButton = styled.button`
   color: #000;
   cursor: pointer;
   padding: 0 0.5rem;
+`;
+
+const CloseIcon = styled.img`
+  width: 1.5rem;
 `;
 
 function Modal({ children, isShowCloseButton }) {
@@ -60,7 +65,9 @@ function Modal({ children, isShowCloseButton }) {
         <ModalMain>
           {children}
           {isShowCloseButton && (
-            <CloseButton onClick={closeModal}>x</CloseButton>
+            <ModalButton onClick={closeModal}>
+              <CloseIcon src={data.closeIcon.src} alt="close-icon" />
+            </ModalButton>
           )}
         </ModalMain>
       </ModalOverlay>
