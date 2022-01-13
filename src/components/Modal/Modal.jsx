@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const ModalStyled = styled.div`
+const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,7 @@ const ModalStyled = styled.div`
   background: rgba(0, 0, 0, 0.6);
 `;
 
-const ModalSectionStyled = styled.section`
+const ModalMain = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +35,7 @@ const ModalSectionStyled = styled.section`
   }
 `;
 
-const CloseButtonStyled = styled.button`
+const CloseButton = styled.button`
   position: fixed;
   top: 0;
   right: 0;
@@ -56,14 +56,14 @@ function Modal({ children, isShowCloseButton }) {
 
   return (
     isShowModal && (
-      <ModalStyled>
-        <ModalSectionStyled>
+      <ModalOverlay>
+        <ModalMain>
           {children}
           {isShowCloseButton && (
-            <CloseButtonStyled onClick={closeModal}>x</CloseButtonStyled>
+            <CloseButton onClick={closeModal}>x</CloseButton>
           )}
-        </ModalSectionStyled>
-      </ModalStyled>
+        </ModalMain>
+      </ModalOverlay>
     )
   );
 }
