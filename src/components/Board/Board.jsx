@@ -16,7 +16,7 @@ const BoardStyled = styled.div`
   max-width: 1400px;
 `;
 
-function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
+function Board({ duplicatedCards, setIsStartGame, gameDifficulty }) {
   const [cards, setCards] = useState(shuffleArray(duplicatedCards));
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
@@ -90,7 +90,7 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
         resetGame={resetGame}
         changeLevel={changeLevel}
       />
-      <BoardStyled className={gameLevel}>
+      <BoardStyled className={gameDifficulty}>
         {cards.map((card) => {
           return (
             <Card
