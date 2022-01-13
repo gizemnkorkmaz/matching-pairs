@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Card from "../Card/Card";
 import BoardHeader from "../BoardHeader/BoardHeader";
-import ScoreBoard from "../ScoreBoard/ScoreBoard";
+import ScoreBoardModal from "../ScoreBoardModal/ScoreBoardModal";
 
 import shuffleArray from "../../utils/shuffleArray";
 import getNameById from "../../utils/getNameById";
@@ -104,7 +104,7 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
         })}
       </BoardStyled>
       {isGameOver && (
-        <ScoreBoard
+        <ScoreBoardModal
           turnsCount={turnsCount}
           score={score}
           bestScore={bestScore}
