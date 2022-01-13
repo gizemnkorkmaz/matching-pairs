@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
 import styled from "styled-components";
 
 const ModalStyled = styled.div`
@@ -45,7 +44,7 @@ const CloseButtonStyled = styled.button`
   font-size: 32px;
   color: #000;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
 `;
 
 function Modal({ children }) {
@@ -62,9 +61,7 @@ function Modal({ children }) {
         <ModalSectionStyled>
           {children}
           {isShowCloseButton && (
-            <CloseButtonStyled onClick={closeModal}>
-              <AiOutlineClose />
-            </CloseButtonStyled>
+            <CloseButtonStyled onClick={closeModal}>x</CloseButtonStyled>
           )}
         </ModalSectionStyled>
       </ModalStyled>
