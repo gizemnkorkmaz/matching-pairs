@@ -47,9 +47,8 @@ const CloseButtonStyled = styled.button`
   padding: 0 0.5rem;
 `;
 
-function Modal({ children }) {
+function Modal({ children, isShowCloseButton }) {
   const [isShowModal, setIsShowModal] = useState(true);
-  const [isShowCloseButton, setIsShowCloseButton] = useState(true);
 
   const closeModal = () => {
     setIsShowModal(false);

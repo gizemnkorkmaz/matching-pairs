@@ -21,9 +21,16 @@ const ScoreBoardBestScore = styled.p`
   font-size: 18px;
 `;
 
-function ScoreBoard({ turnsCount, score, bestScore, changeLevel, resetGame }) {
+function ScoreBoard({
+  turnsCount,
+  score,
+  bestScore,
+  changeLevel,
+  resetGame,
+  isShowCloseButton,
+}) {
   return (
-    <Modal>
+    <Modal isShowCloseButton={false}>
       <ScoreBoardHeader>Congratulations!</ScoreBoardHeader>
       <ScoreBoardMain>
         You completed the game in <SpanStyled>{turnsCount}</SpanStyled> turns
