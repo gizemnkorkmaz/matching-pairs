@@ -22,7 +22,7 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
   const [flippedCardList, setFlippedCardList] = useState([]);
   const [turnsCount, setTurnsCount] = useState(0);
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
 
   const calculateScore = () => {
@@ -32,8 +32,8 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
 
     setScore(finalScore);
 
-    if (finalScore > highScore) {
-      setHighScore(finalScore);
+    if (finalScore > bestScore) {
+      setBestScore(finalScore);
     }
   };
 
@@ -107,7 +107,7 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
         <ScoreBoard
           turnsCount={turnsCount}
           score={score}
-          highScore={highScore}
+          bestScore={bestScore}
           changeLevel={changeLevel}
           resetGame={resetGame}
         />
