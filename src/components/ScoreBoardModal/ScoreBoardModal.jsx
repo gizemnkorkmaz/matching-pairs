@@ -4,43 +4,42 @@ import styled from "styled-components";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
 
-const ScoreBoardHeader = styled.h1`
+const Header = styled.h1`
   text-align: center;
 `;
 
-const ScoreBoardMain = styled.p`
+const Scores = styled.p`
   color: #eee;
   font-size: 24px;
 `;
 
-const SpanStyled = styled.span`
+const Span = styled.span`
   font-size: 28px;
 `;
 
-const ScoreBoardBestScore = styled.p`
+const BestScore = styled.p`
   font-size: 18px;
 `;
 
-function ScoreBoard({
+function ScoreBoardModal({
   turnsCount,
   score,
   bestScore,
   changeLevel,
   resetGame,
-  isShowCloseButton,
 }) {
   return (
-    <Modal isShowCloseButton={false}>
-      <ScoreBoardHeader>Congratulations!</ScoreBoardHeader>
-      <ScoreBoardMain>
-        You completed the game in <SpanStyled>{turnsCount}</SpanStyled> turns
-        and got <SpanStyled>{score}</SpanStyled> points!
-      </ScoreBoardMain>
-      <ScoreBoardBestScore>Your best score is {bestScore}</ScoreBoardBestScore>
+    <Modal isShowCloseButton={true}>
+      <Header>Congratulations!</Header>
+      <Scores>
+        You completed the game in <Span>{turnsCount}</Span> turns and got{" "}
+        <Span>{score}</Span> points!
+      </Scores>
+      <BestScore>Your best score is {bestScore}</BestScore>
       <Button handleClick={resetGame}>Beat your best score</Button>
       <Button handleClick={changeLevel}>New Game</Button>
     </Modal>
   );
 }
 
-export default ScoreBoard;
+export default ScoreBoardModal;
