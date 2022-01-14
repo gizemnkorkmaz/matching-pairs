@@ -29,15 +29,15 @@ function ScoreBoardModal({
   resetGame,
 }) {
   return (
-    <Modal isShowCloseButton={true}>
+    <Modal isShowCloseButton={false}>
       <Header>Congratulations!</Header>
       <Scores>
         You completed the game in <Span>{turnsCount}</Span> turns and got{" "}
         <Span>{score}</Span> points!
       </Scores>
       <BestScore>Your best score is {bestScore}</BestScore>
-      <Button handleClick={resetGame}>Beat your best score</Button>
-      <Button handleClick={changeLevel}>New Game</Button>
+      <Button onClick={resetGame}>Beat your best score</Button>
+      <Button onClick={changeLevel}>New Game</Button>
     </Modal>
   );
 }
