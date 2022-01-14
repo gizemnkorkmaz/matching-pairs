@@ -36,7 +36,7 @@ const ModalMain = styled.section`
   }
 `;
 
-const ModalButton = styled.button`
+const Button = styled.button`
   position: fixed;
   top: 0;
   right: 0;
@@ -65,9 +65,9 @@ function Modal({ children, isShowCloseButton }) {
         <ModalMain>
           {children}
           {isShowCloseButton && (
-            <ModalButton onClick={closeModal}>
+            <Button onClick={closeModal}>
               <CloseIcon src={data.closeIcon.src} alt="close-icon" />
-            </ModalButton>
+            </Button>
           )}
         </ModalMain>
       </ModalOverlay>
