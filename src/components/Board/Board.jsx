@@ -54,7 +54,6 @@ function Board({ duplicatedCards, setIsStartGame, gameDifficulty, isOpen }) {
 
         if (currentFlippedCards.length === cards.length) {
           calculateScore();
-
           setIsOpenScoreBoard(true);
         }
       }
