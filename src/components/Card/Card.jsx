@@ -4,47 +4,61 @@ import styled from "styled-components";
 import data from "../../data.json";
 
 const CardStyled = styled.div`
-  perspective: 1000px;
-  padding-top: 0;
-
   .card {
     position: relative;
+  }
+
+  .card-front,
+  .card-back {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
     cursor: pointer;
-    transition: 0.6s;
-    transform-style: preserve-3d;
-    position: relative;
+    margin: 0.1rem;
 
-    .card-image {
-      width: 150px;
-      height: 150px;
-      border-radius: 10px;
-      box-shadow: 5px 5px 10px black;
-      cursor: pointer;
+    @media (max-width: 1000px) {
+      width: 120px;
+      height: 120px;
+    }
 
-      @media (max-width: 1000px) {
-        width: 120px;
-        height: 120px;
-      }
-
-      @media (max-width: 500px) {
-        width: 80px;
-        height: 80px;
-      }
+    @media (max-width: 500px) {
+      width: 80px;
+      height: 80px;
     }
   }
-  .card.is-flipped {
-    transform: rotateY(180deg);
+
+  .card-front {
+    transform: rotateY(90deg);
+    transition: all ease-in 0.2s;
+    position: absolute;
+  }
+
+  .flipped .card-front {
+    transform: rotateY(0deg);
+    transition-delay: 0.2s;
+  }
+
+  .card-back {
+    transition: all ease-in 0.2s;
+    transition-delay: 0.2s;
+  }
+
+  .flipped .card-back {
+    transform: rotateY(90deg);
+    transition-delay: 0s;
   }
 `;
 
 function Card({ image, cardId, isFlipped, handleClick }) {
   return (
     <CardStyled onClick={handleClick}>
-      <div className={`card ${isFlipped ? "is-flipped" : ""}`}>
+      <div className={`card ${isFlipped ? "flipped" : ""}`}>
+        <img src={image} data-id={cardId} className="card-front" alt="" />
         <img
-          src={isFlipped ? image : data.cover.src}
+          src={data.cover.src}
           data-id={cardId}
-          className="card-image"
+          className="card-back"
           alt=""
         />
       </div>

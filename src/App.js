@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Header from "./components/Header/Header";
 import Board from "./components/Board/Board";
-import Levels from "./components/Levels/Levels";
+import Difficulty from "./components/Difficulty/Difficulty";
 import GlobalStyle from "./components/globalStyled";
 
 import duplicateCards from "./utils/duplicateCards";
@@ -12,19 +12,19 @@ import data from "./data.json";
 function App() {
   const [isStartGame, setIsStartGame] = useState(false);
   const [duplicatedCards, setDuplicatedCards] = useState(null);
-  const [gameLevel, setGameLevel] = useState(null);
+  const [gameDifficulty, setGameDifficulty] = useState(null);
 
-  const selectLevel = (level = "easy") => {
+  const selectDifficulty = (difficulty = "easy") => {
     const cardCounts = {
       easy: 4,
       medium: 8,
       hard: 12,
     };
 
-    const cards = duplicateCards(data, cardCounts[level]);
+    const cards = duplicateCards(data, cardCounts[difficulty]);
 
     setDuplicatedCards(cards);
-    setGameLevel(level);
+    setGameDifficulty(difficulty);
     setIsStartGame(true);
   };
 
@@ -36,10 +36,10 @@ function App() {
         <Board
           duplicatedCards={duplicatedCards}
           setIsStartGame={setIsStartGame}
-          gameLevel={gameLevel}
+          gameDifficulty={gameDifficulty}
         />
       ) : (
-        <Levels selectLevel={selectLevel} />
+        <Difficulty selectDifficulty={selectDifficulty} />
       )}
     </div>
   );

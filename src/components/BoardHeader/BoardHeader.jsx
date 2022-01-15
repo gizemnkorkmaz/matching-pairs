@@ -24,8 +24,8 @@ function BoardHeader({ turnsCount, resetGame, changeLevel }) {
     <BoardHeaderStyled>
       <Stats turnsCount={turnsCount} />
       <BoardActionsWrapper>
-        <Button handleClick={resetGame}>Reset Game</Button>
-        <Button handleClick={changeLevel}>Change Level</Button>
+        <Button onClick={resetGame}>Reset Game</Button>
+        <Button onClick={changeLevel}>Change Level</Button>
       </BoardActionsWrapper>
     </BoardHeaderStyled>
   );

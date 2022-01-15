@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Card from "../Card/Card";
 import BoardHeader from "../BoardHeader/BoardHeader";
-import ScoreBoard from "../ScoreBoard/ScoreBoard";
+import ScoreBoardModal from "../ScoreBoardModal/ScoreBoardModal";
 
 import shuffleArray from "../../utils/shuffleArray";
 import getNameById from "../../utils/getNameById";
@@ -16,20 +16,19 @@ const BoardStyled = styled.div`
   max-width: 1400px;
 `;
 
-function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
+function Board({ duplicatedCards, setIsStartGame, gameDifficulty }) {
   const [cards, setCards] = useState(shuffleArray(duplicatedCards));
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
   const [turnsCount, setTurnsCount] = useState(0);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [isGameOver, setIsGameOver] = useState(false);
+  const [isOpenScoreBoard, setIsOpenScoreBoard] = useState(false);
 
   const calculateScore = () => {
     const maxScore = 10000;
     const uniqueCardCount = cards.length / 2;
     const finalScore = Math.floor(maxScore * (uniqueCardCount / turnsCount));
-
     setScore(finalScore);
 
     if (finalScore > bestScore) {
@@ -54,7 +53,7 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
 
         if (currentFlippedCards.length === cards.length) {
           calculateScore();
-          setIsGameOver(true);
+          setIsOpenScoreBoard(true);
         }
       }
 
@@ -75,12 +74,12 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
     setFlippedCardList([]);
     setTurnsCount(0);
     setScore(0);
-    setIsGameOver(false);
+    setIsOpenScoreBoard(false);
   };
 
   const changeLevel = () => {
     setIsStartGame(false);
-    setIsGameOver(false);
+    setIsOpenScoreBoard(false);
   };
 
   return (
@@ -90,7 +89,7 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
         resetGame={resetGame}
         changeLevel={changeLevel}
       />
-      <BoardStyled className={gameLevel}>
+      <BoardStyled className={gameDifficulty}>
         {cards.map((card) => {
           return (
             <Card
@@ -103,15 +102,15 @@ function Board({ duplicatedCards, setIsStartGame, gameLevel }) {
           );
         })}
       </BoardStyled>
-      {isGameOver && (
-        <ScoreBoard
-          turnsCount={turnsCount}
-          score={score}
-          bestScore={bestScore}
-          changeLevel={changeLevel}
-          resetGame={resetGame}
-        />
-      )}
+      <ScoreBoardModal
+        isOpen={isOpenScoreBoard}
+        setIsOpen={setIsOpenScoreBoard}
+        turnsCount={turnsCount}
+        score={score}
+        bestScore={bestScore}
+        changeLevel={changeLevel}
+        resetGame={resetGame}
+      />
     </>
   );
 }

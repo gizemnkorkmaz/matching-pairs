@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import data from "../../data.json";
 
-const ModalStyled = styled.div`
+const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +11,7 @@ const ModalStyled = styled.div`
   background: rgba(0, 0, 0, 0.6);
 `;
 
-const ModalSectionStyled = styled.section`
+const ModalMain = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +36,7 @@ const ModalSectionStyled = styled.section`
   }
 `;
 
-const CloseButtonStyled = styled.button`
+const Button = styled.button`
   position: fixed;
   top: 0;
   right: 0;
@@ -47,23 +48,27 @@ const CloseButtonStyled = styled.button`
   padding: 0 0.5rem;
 `;
 
-function Modal({ children, isShowCloseButton }) {
-  const [isShowModal, setIsShowModal] = useState(true);
+const CloseIcon = styled.img`
+  width: 1.5rem;
+`;
 
+function Modal({ children, isOpen, setIsOpen, isShowCloseButton }) {
   const closeModal = () => {
-    setIsShowModal(false);
+    setIsOpen(false);
   };
 
   return (
-    isShowModal && (
-      <ModalStyled>
-        <ModalSectionStyled>
+    isOpen && (
+      <ModalOverlay>
+        <ModalMain>
           {children}
           {isShowCloseButton && (
-            <CloseButtonStyled onClick={closeModal}>x</CloseButtonStyled>
+            <Button onClick={closeModal}>
+              <CloseIcon src={data.closeIcon.src} alt="close-icon" />
+            </Button>
           )}
-        </ModalSectionStyled>
-      </ModalStyled>
+        </ModalMain>
+      </ModalOverlay>
     )
   );
 }

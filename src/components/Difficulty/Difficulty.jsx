@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const LevelsStyled = styled.div`
+const DifficultyStyled = styled.div`
   padding: 2rem;
   text-align: center;
   font-size: 18px;
@@ -36,17 +36,17 @@ const LevelsStyled = styled.div`
   }
 `;
 
-function Levels({ selectLevel }) {
+function Difficulty({ selectDifficulty }) {
   return (
-    <LevelsStyled>
+    <DifficultyStyled>
       <h1>Please select a difficulty level</h1>
       <div>
-        <button onClick={() => selectLevel("easy")}>Easy</button>
-        <button onClick={() => selectLevel("medium")}>Medium</button>
-        <button onClick={() => selectLevel("hard")}>Hard</button>
+        <button onClick={() => selectDifficulty("easy")}>Easy</button>
+        <button onClick={() => selectDifficulty("medium")}>Medium</button>
+        <button onClick={() => selectDifficulty("hard")}>Hard</button>
       </div>
-    </LevelsStyled>
+    </DifficultyStyled>
   );
 }
 
-export default Levels;
+export default Difficulty;
