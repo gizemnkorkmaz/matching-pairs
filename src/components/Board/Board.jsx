@@ -16,7 +16,7 @@ const BoardStyled = styled.div`
   max-width: 1400px;
 `;
 
-function Board({ duplicatedCards, setIsStartGame, gameDifficulty, isOpen }) {
+function Board({ duplicatedCards, setIsStartGame, gameDifficulty }) {
   const [cards, setCards] = useState(shuffleArray(duplicatedCards));
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
@@ -29,7 +29,6 @@ function Board({ duplicatedCards, setIsStartGame, gameDifficulty, isOpen }) {
     const maxScore = 10000;
     const uniqueCardCount = cards.length / 2;
     const finalScore = Math.floor(maxScore * (uniqueCardCount / turnsCount));
-
     setScore(finalScore);
 
     if (finalScore > bestScore) {
