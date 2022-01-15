@@ -8,8 +8,8 @@ const CardStyled = styled.div`
     position: relative;
   }
 
-  .card .front,
-  .card .back {
+  .card-front,
+  .card-back {
     width: 150px;
     height: 150px;
     border-radius: 10px;
@@ -28,23 +28,23 @@ const CardStyled = styled.div`
     }
   }
 
-  .card .front {
+  .card-front {
     transform: rotateY(90deg);
     transition: all ease-in 0.2s;
     position: absolute;
   }
 
-  .flipped .front {
+  .flipped .card-front {
     transform: rotateY(0deg);
     transition-delay: 0.2s;
   }
 
-  .card .back {
+  .card-back {
     transition: all ease-in 0.2s;
     transition-delay: 0.2s;
   }
 
-  .flipped .back {
+  .flipped .card-back {
     transform: rotateY(90deg);
     transition-delay: 0s;
   }
@@ -54,8 +54,13 @@ function Card({ image, cardId, isFlipped, handleClick }) {
   return (
     <CardStyled onClick={handleClick}>
       <div className={`card ${isFlipped ? "flipped" : ""}`}>
-        <img src={image} data-id={cardId} className="front" alt="" />
-        <img src={data.cover.src} data-id={cardId} className="back" alt="" />
+        <img src={image} data-id={cardId} className="card-front" alt="" />
+        <img
+          src={data.cover.src}
+          data-id={cardId}
+          className="card-back"
+          alt=""
+        />
       </div>
     </CardStyled>
   );
