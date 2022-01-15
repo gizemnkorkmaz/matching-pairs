@@ -29,7 +29,7 @@ function ScoreBoardModal({
   resetGame,
 }) {
   return (
-    <Modal isShowCloseButton={false}>
+    <Modal isOpen={true} isShowCloseButton={false}>
       <Header>Congratulations!</Header>
       <Scores>
         You completed the game in <Span>{turnsCount}</Span> turns and got{" "}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import data from "../../data.json";
 
@@ -52,15 +52,13 @@ const CloseIcon = styled.img`
   width: 1.5rem;
 `;
 
-function Modal({ children, isShowCloseButton }) {
-  const [isShowModal, setIsShowModal] = useState(true);
-
+function Modal({ children, isOpen, isShowCloseButton }) {
   const closeModal = () => {
-    setIsShowModal(false);
+    isOpen = false;
   };
 
   return (
-    isShowModal && (
+    isOpen && (
       <ModalOverlay>
         <ModalMain>
           {children}
