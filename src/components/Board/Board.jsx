@@ -16,14 +16,14 @@ const BoardStyled = styled.div`
   max-width: 1400px;
 `;
 
-function Board({ duplicatedCards, setIsStartGame, gameDifficulty }) {
+function Board({ duplicatedCards, setIsStartGame, gameDifficulty, isOpen }) {
   const [cards, setCards] = useState(shuffleArray(duplicatedCards));
   const [cardPair, setCardPair] = useState([]);
   const [flippedCardList, setFlippedCardList] = useState([]);
   const [turnsCount, setTurnsCount] = useState(0);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [isGameOver, setIsGameOver] = useState(false);
+  const [isOpenScoreBoard, setIsOpenScoreBoard] = useState(false);
 
   const calculateScore = () => {
     const maxScore = 10000;
@@ -54,7 +54,8 @@ function Board({ duplicatedCards, setIsStartGame, gameDifficulty }) {
 
         if (currentFlippedCards.length === cards.length) {
           calculateScore();
-          setIsGameOver(true);
+
+          setIsOpenScoreBoard(true);
         }
       }
 
@@ -75,12 +76,12 @@ function Board({ duplicatedCards, setIsStartGame, gameDifficulty }) {
     setFlippedCardList([]);
     setTurnsCount(0);
     setScore(0);
-    setIsGameOver(false);
+    setIsOpenScoreBoard(false);
   };
 
   const changeLevel = () => {
     setIsStartGame(false);
-    setIsGameOver(false);
+    setIsOpenScoreBoard(false);
   };
 
   return (
@@ -103,15 +104,15 @@ function Board({ duplicatedCards, setIsStartGame, gameDifficulty }) {
           );
         })}
       </BoardStyled>
-      {isGameOver && (
-        <ScoreBoardModal
-          turnsCount={turnsCount}
-          score={score}
-          bestScore={bestScore}
-          changeLevel={changeLevel}
-          resetGame={resetGame}
-        />
-      )}
+      <ScoreBoardModal
+        isOpen={isOpenScoreBoard}
+        setIsOpen={setIsOpenScoreBoard}
+        turnsCount={turnsCount}
+        score={score}
+        bestScore={bestScore}
+        changeLevel={changeLevel}
+        resetGame={resetGame}
+      />
     </>
   );
 }
