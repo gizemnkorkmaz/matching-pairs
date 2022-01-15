@@ -52,9 +52,9 @@ const CloseIcon = styled.img`
   width: 1.5rem;
 `;
 
-function Modal({ children, isOpen, isShowCloseButton }) {
+function Modal({ children, isOpen, setIsOpen, isShowCloseButton }) {
   const closeModal = () => {
-    isOpen = false;
+    setIsOpen(false);
   };
 
   return (
