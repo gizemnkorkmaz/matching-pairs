@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Modal from "../Modal/Modal";
@@ -28,8 +28,14 @@ function ScoreBoardModal({
   changeLevel,
   resetGame,
 }) {
+  const [isOpenScoreBoardModal, setIsOpenScoreBoardModal] = useState(true);
+
   return (
-    <Modal isOpen={true} isShowCloseButton={false}>
+    <Modal
+      isOpen={isOpenScoreBoardModal}
+      setIsOpen={setIsOpenScoreBoardModal}
+      isShowCloseButton={false}
+    >
       <Header>Congratulations!</Header>
       <Scores>
         You completed the game in <Span>{turnsCount}</Span> turns and got{" "}
