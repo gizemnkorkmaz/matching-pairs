@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import Modal from "../Modal/Modal";
-import Button from "../Button/Button";
+import Modal from "./Modal";
+import Button from "./Button";
 
 const Header = styled.h1`
   text-align: center;

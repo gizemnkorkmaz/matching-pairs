@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import Card from "../Card/Card";
-import BoardHeader from "../BoardHeader/BoardHeader";
-import ScoreBoardModal from "../ScoreBoardModal/ScoreBoardModal";
+import Card from "./Card";
+import BoardHeader from "./BoardHeader";
+import ScoreBoardModal from "./ScoreBoardModal";
 
-import shuffleArray from "../../utils/shuffleArray";
-import getNameById from "../../utils/getNameById";
+import shuffleArray from "../utils/shuffleArray";
+import getNameById from "../utils/getNameById";
 
 const BoardStyled = styled.div`
   display: grid;

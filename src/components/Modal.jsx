@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import data from "../../data.json";
+import data from "../data.json";
 
 const ModalOverlay = styled.div`
   position: fixed;
