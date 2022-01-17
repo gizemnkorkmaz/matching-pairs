@@ -5,7 +5,6 @@ import data from "../data.json";
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
@@ -17,7 +16,7 @@ const ModalMain = styled.section`
   justify-content: center;
   align-items: center;
   font-size: 22px;
-  position: fixed;
+  position: absolute;
   background: #1e230f;
   width: 40%;
   max-width: 700px;
