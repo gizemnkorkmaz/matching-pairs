@@ -36,35 +36,40 @@ function Board({ duplicatedCards, setIsStartGame, gameDifficulty }) {
     }
   };
 
+  const resetCardPair = () => setCardPair([]);
+
   const handleCardClick = (id) => {
+    clearTimeout(window.cardFlipTimer);
+
     if (cardPair.includes(id)) return;
 
     const currentCardPair = [...cardPair, id];
-    const [firstCardId, secondCardId] = currentCardPair;
 
-    if (cardPair.length === 1) {
-      const firstCardName = getNameById(cards, firstCardId);
-      const secondCardName = getNameById(cards, secondCardId);
-
-      if (firstCardName === secondCardName) {
-        const currentFlippedCards = [...flippedCardList, ...currentCardPair];
-
-        setFlippedCardList(currentFlippedCards);
-
-        if (currentFlippedCards.length === cards.length) {
-          calculateScore();
-          setTimeout(() => setIsOpenScoreBoard(true), 1000);
-        }
-      }
-
-      setCardPair(currentCardPair);
-    } else if (!cardPair.length) {
+    if (currentCardPair.length === 3) {
+      setCardPair([id]);
+    } else {
       setCardPair(currentCardPair);
     }
 
-    if (currentCardPair.length === 2) {
-      setTurnsCount(turnsCount + 1);
-      setTimeout(() => setCardPair([]), 1000);
+    if (currentCardPair.length !== 2) return;
+
+    setTurnsCount(turnsCount + 1);
+
+    const [firstCardName, secondCardName] = currentCardPair.map((cardId) =>
+      getNameById(cards, cardId)
+    );
+
+    if (firstCardName === secondCardName) {
+      const currentFlippedCards = [...flippedCardList, ...currentCardPair];
+      setFlippedCardList(currentFlippedCards);
+      resetCardPair();
+
+      if (cards.length === currentFlippedCards.length) {
+        calculateScore();
+        setTimeout(() => setIsOpenScoreBoard(true), 1000);
+      }
+    } else {
+      window.cardFlipTimer = setTimeout(resetCardPair, 1000);
     }
   };
 
