@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import Header from "./components/Header/Header";
-import Board from "./components/Board/Board";
-import Difficulty from "./components/Difficulty/Difficulty";
+import Header from "./components/Header";
+import Board from "./components/Board";
+import Difficulty from "./components/Difficulty";
 import GlobalStyle from "./components/globalStyled";
 
 import duplicateCards from "./utils/duplicateCards";
