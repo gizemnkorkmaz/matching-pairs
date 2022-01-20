@@ -16,6 +16,8 @@ const Header = styled.h1`
   opacity: 0.6;
 `;
 
+const ButtonContainer = styled.div``;
+
 const Button = styled.button`
 font-size: 22px;
 cursor: pointer;
@@ -42,11 +44,11 @@ function Difficulty({ selectDifficulty }) {
     <>
       <DifficultyStyled>
         <Header>Please select a difficulty level</Header>
-        <div>
+        <ButtonContainer>
           <Button onClick={() => selectDifficulty("easy")}>Easy</Button>
           <Button onClick={() => selectDifficulty("medium")}>Medium</Button>
           <Button onClick={() => selectDifficulty("hard")}>Hard</Button>
-        </div>
+        </ButtonContainer>
       </DifficultyStyled>
       <Footer />
     </>
