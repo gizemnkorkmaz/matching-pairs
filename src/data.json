@@ -52,14 +52,5 @@
   "cover": {
     "name": "cover",
     "src": "/images/cards/cover.webp"
-  },
-  "closeIcon": {
-    "src": "/images/icon/close.svg"
-  },
-  "twitterIcon": {
-    "src": "/images/icon/twitter.svg"
-  },
-  "githubIcon": {
-    "src": "/images/icon/github.svg"
   }
 }
