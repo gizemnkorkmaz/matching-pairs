@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import data from "../data.json";
+import { ReactComponent as CloseIcon } from "../assets/icons/close.svg";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -47,10 +47,6 @@ const Button = styled.button`
   padding: 0 0.5rem;
 `;
 
-const CloseIcon = styled.img`
-  width: 1.5rem;
-`;
-
 function Modal({ children, isOpen, setIsOpen, isShowCloseButton }) {
   const closeModal = () => {
     setIsOpen(false);
@@ -63,7 +59,7 @@ function Modal({ children, isOpen, setIsOpen, isShowCloseButton }) {
           {children}
           {isShowCloseButton && (
             <Button onClick={closeModal}>
-              <CloseIcon src={data.closeIcon.src} alt="close-icon" />
+              <CloseIcon />
             </Button>
           )}
         </ModalMain>

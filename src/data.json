@@ -52,8 +52,5 @@
   "cover": {
     "name": "cover",
     "src": "/images/cards/cover.webp"
-  },
-  "closeIcon": {
-    "src": "/images/icon/close.svg"
   }
 }
