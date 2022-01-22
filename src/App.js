@@ -3,7 +3,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Board from "./components/Board";
 import Difficulty from "./components/Difficulty";
-import GlobalStyle from "./components/globalStyled";
+import GlobalStyle from "./assets/styles/globalStyled";
 
 import duplicateCards from "./utils/duplicateCards";
 
