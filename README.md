@@ -11,7 +11,7 @@ This project is a mobile-friendly matching pairs game played with a set of cards
 
 ## Demo
 
-![Demo](./public/demo/demo.mov)
+![Demo]
 
 ## Installation
 
@@ -34,5 +34,6 @@ npm run start
 
 - [React](https://reactjs.org/)
 - [styled-components](https://styled-components.com/)
+- [Atropos](https://atroposjs.com/)
 - [nanoid](https://github.com/ai/nanoid)
 - [Prettier](https://prettier.io/)
