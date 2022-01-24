@@ -34,6 +34,5 @@ npm run start
 
 - [React](https://reactjs.org/)
 - [styled-components](https://styled-components.com/)
-- [Atropos](https://atroposjs.com/)
 - [nanoid](https://github.com/ai/nanoid)
 - [Prettier](https://prettier.io/)
