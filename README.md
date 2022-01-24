@@ -11,7 +11,7 @@ This project is a mobile-friendly matching pairs game played with a set of cards
 
 ## Demo
 
-https://user-images.githubusercontent.com/66412137/150772958-2201f77b-a733-4ae3-b996-a6a9d8ec4e08.mov
+https://user-images.githubusercontent.com/66412137/150778956-64850fa5-9f68-43b5-9624-89b5fca80f4a.mov
 
 ## Installation
 
