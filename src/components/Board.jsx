@@ -95,17 +95,15 @@ function Board({ duplicatedCards, setIsStartGame, gameDifficulty }) {
         changeLevel={changeLevel}
       />
       <BoardStyled className={gameDifficulty}>
-        {cards.map((card) => {
-          return (
-            <Card
-              key={card.id}
-              image={card.src}
-              cardId={card.id}
-              handleClick={() => handleCardClick(card.id)}
-              isFlipped={[...flippedCardList, ...cardPair].includes(card.id)}
-            />
-          );
-        })}
+        {cards.map((card) => (
+          <Card
+            key={card.id}
+            image={card.src}
+            cardId={card.id}
+            handleClick={() => handleCardClick(card.id)}
+            isFlipped={[...flippedCardList, ...cardPair].includes(card.id)}
+          />
+        ))}
       </BoardStyled>
       <ScoreBoardModal
         isOpen={isOpenScoreBoard}
