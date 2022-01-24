@@ -1,8 +1,5 @@
 import React from "react";
-
 import styled from "styled-components";
-import Atropos from "atropos/react";
-import "../assets/styles/atropos.min.css";
 
 import data from "../data.json";
 
@@ -58,19 +55,12 @@ function Card({ image, cardId, isFlipped, handleClick }) {
     <CardStyled onClick={handleClick}>
       <div className={`card ${isFlipped ? "flipped" : ""}`}>
         <img src={image} data-id={cardId} className="card-front" alt="" />
-        <Atropos
-          className="my-atropos"
-          rotateLock={true}
-          shadow={true}
-          shadowOffset={50}
-        >
-          <img
-            src={data.cover.src}
-            data-id={cardId}
-            className="card-back"
-            alt=""
-          />
-        </Atropos>
+        <img
+          src={data.cover.src}
+          data-id={cardId}
+          className="card-back"
+          alt=""
+        />
       </div>
     </CardStyled>
   );
