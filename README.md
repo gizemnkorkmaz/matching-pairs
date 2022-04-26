@@ -36,3 +36,7 @@ npm run start
 - [styled-components](https://styled-components.com/)
 - [nanoid](https://github.com/ai/nanoid)
 - [Prettier](https://prettier.io/)
+
+### Special Thanks
+
+- [aykutkardas](https://github.com/aykutkardas) (for his mentorship)
